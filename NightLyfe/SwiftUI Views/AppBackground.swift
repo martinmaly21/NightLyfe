@@ -29,7 +29,7 @@ struct AppBackground<Content: View>: View {
                     .foregroundColor(.white)
                     .opacity(0.07)
                     .frame(width: 700, height: 325)
-                    .offset(x: -100, y: 0)
+                    .offset(x: -100, y: 15)
                     .font(.title)
             }
             }

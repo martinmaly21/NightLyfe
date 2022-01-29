@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct QRVaccineSummaryView: View {
+    @State private var shouldNavigate = false
+    
     var passport: PassportFragment
     
     var body: some View {
@@ -138,6 +140,16 @@ struct QRVaccineSummaryView: View {
                             Spacer()
                         }
                     }
+                    
+                    NavigationLink(
+                        isActive: $shouldNavigate,
+                        destination: {
+                            IDScannerView()
+                        },
+                        label: {
+                            EmptyView()
+                        }
+                    )
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
@@ -148,6 +160,14 @@ struct QRVaccineSummaryView: View {
                 
                 Spacer()
             }
+            .navigationBarItems(
+                trailing:
+                    Button(action: {
+                        shouldNavigate = true
+                    }) {
+                        Text("Next")
+                    }
+            )
         }
         .navigationTitle("Vaccine Summary")
     }
