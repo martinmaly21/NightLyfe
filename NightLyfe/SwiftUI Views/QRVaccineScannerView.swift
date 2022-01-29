@@ -20,6 +20,14 @@ struct QRVaccineScannerView: View {
                     .frame(height: 130)
                    
                 VStack(spacing: 16) {
+                    
+                    Image(systemName: "qrcode.viewfinder")
+                        .resizable()
+                        .renderingMode(.template)
+                        .foregroundColor(.white)
+                        .frame(width: 160, height: 160)
+                        .offset(x: 0, y: -40)
+                    
                     Button(action: {
                         isShowingScanner = true
                     }) {

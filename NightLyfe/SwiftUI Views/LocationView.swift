@@ -31,10 +31,10 @@ struct LocationView: View {
                         }
                     }
                 }
-                .padding()
                 
                 Spacer()
             }
+            .padding()
         }
         .navigationTitle("Locations")
         .onAppear {
