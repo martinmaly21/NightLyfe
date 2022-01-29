@@ -19,6 +19,10 @@
 		50F0732527A54ED100820324 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 50F0732427A54ED100820324 /* CodeScanner */; };
 		50F0732727A552BF00820324 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F0732627A552BF00820324 /* Color.swift */; };
 		50F0732927A5532600820324 /* AppBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F0732827A5532600820324 /* AppBackground.swift */; };
+		50F0732B27A55F8200820324 /* QRVaccineSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F0732A27A55F8200820324 /* QRVaccineSummaryView.swift */; };
+		50F0732D27A5600600820324 /* ProcessPassport.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 50F0732C27A5600600820324 /* ProcessPassport.graphql */; };
+		50F0732F27A5609500820324 /* CreateAccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F0732E27A5609500820324 /* CreateAccountManager.swift */; };
+		50F0733127A560E800820324 /* PassportFragment.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 50F0733027A560E800820324 /* PassportFragment.graphql */; };
 		50F42D6A27A5392A00E046D7 /* AddLocation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 50F42D6927A5392A00E046D7 /* AddLocation.graphql */; };
 		50F42D6D27A53B0300E046D7 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F42D6C27A53B0300E046D7 /* API.swift */; };
 		50F42D7027A53B8900E046D7 /* ApolloManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F42D6F27A53B8900E046D7 /* ApolloManager.swift */; };
@@ -41,6 +45,10 @@
 		50F0732127A54E1D00820324 /* QRVaccineScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRVaccineScannerView.swift; sourceTree = "<group>"; };
 		50F0732627A552BF00820324 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		50F0732827A5532600820324 /* AppBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBackground.swift; sourceTree = "<group>"; };
+		50F0732A27A55F8200820324 /* QRVaccineSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRVaccineSummaryView.swift; sourceTree = "<group>"; };
+		50F0732C27A5600600820324 /* ProcessPassport.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProcessPassport.graphql; sourceTree = "<group>"; };
+		50F0732E27A5609500820324 /* CreateAccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountManager.swift; sourceTree = "<group>"; };
+		50F0733027A560E800820324 /* PassportFragment.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = PassportFragment.graphql; sourceTree = "<group>"; };
 		50F42D6927A5392A00E046D7 /* AddLocation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = AddLocation.graphql; sourceTree = "<group>"; };
 		50F42D6C27A53B0300E046D7 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		50F42D6F27A53B8900E046D7 /* ApolloManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloManager.swift; sourceTree = "<group>"; };
@@ -120,6 +128,8 @@
 				50F42D6927A5392A00E046D7 /* AddLocation.graphql */,
 				50F0731B27A544E100820324 /* Locations.graphql */,
 				50F0731D27A5481F00820324 /* LocationFragment.graphql */,
+				50F0732C27A5600600820324 /* ProcessPassport.graphql */,
+				50F0733027A560E800820324 /* PassportFragment.graphql */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -129,6 +139,7 @@
 			children = (
 				50F42D6F27A53B8900E046D7 /* ApolloManager.swift */,
 				50F0731927A5446500820324 /* LocationManager.swift */,
+				50F0732E27A5609500820324 /* CreateAccountManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -150,6 +161,7 @@
 				50F0732127A54E1D00820324 /* QRVaccineScannerView.swift */,
 				50F42D7527A540A700E046D7 /* LocationView.swift */,
 				50F0731F27A54AF700820324 /* LocationCellView.swift */,
+				50F0732A27A55F8200820324 /* QRVaccineSummaryView.swift */,
 			);
 			path = "SwiftUI Views";
 			sourceTree = "<group>";
@@ -232,7 +244,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				50F0731E27A5481F00820324 /* LocationFragment.graphql in Resources */,
+				50F0732D27A5600600820324 /* ProcessPassport.graphql in Resources */,
 				50F0731C27A544E100820324 /* Locations.graphql in Resources */,
+				50F0733127A560E800820324 /* PassportFragment.graphql in Resources */,
 				50F42D6A27A5392A00E046D7 /* AddLocation.graphql in Resources */,
 				50EC953D27A51AB0009D4294 /* Preview Assets.xcassets in Resources */,
 				50EC953A27A51AB0009D4294 /* Assets.xcassets in Resources */,
@@ -330,10 +344,12 @@
 				50F42D7027A53B8900E046D7 /* ApolloManager.swift in Sources */,
 				50F0732727A552BF00820324 /* Color.swift in Sources */,
 				50F42D7627A540A700E046D7 /* LocationView.swift in Sources */,
+				50F0732B27A55F8200820324 /* QRVaccineSummaryView.swift in Sources */,
 				50F0731A27A5446500820324 /* LocationManager.swift in Sources */,
 				50F42D7327A53BE800E046D7 /* Array.swift in Sources */,
 				50F0732027A54AF700820324 /* LocationCellView.swift in Sources */,
 				50F42D6D27A53B0300E046D7 /* API.swift in Sources */,
+				50F0732F27A5609500820324 /* CreateAccountManager.swift in Sources */,
 				50EC953627A51AAF009D4294 /* NightLyfeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

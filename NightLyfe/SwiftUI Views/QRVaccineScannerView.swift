@@ -10,7 +10,8 @@ import CodeScanner
 
 struct QRVaccineScannerView: View {
     @State private var isShowingScanner = false
-    @State private var qrCodeInfo: String?
+    @State private var passport: PassportFragment?
+    @State private var shouldNavigate = false
     
     var body: some View {
         AppBackground {
@@ -42,6 +43,18 @@ struct QRVaccineScannerView: View {
                 }
                 
                 Spacer()
+                
+                NavigationLink(
+                    isActive: $shouldNavigate,
+                    destination: {
+                        if let passport = passport {
+                            QRVaccineSummaryView(passport: passport)
+                        }
+                    },
+                    label: {
+                        EmptyView()
+                    }
+                )
             }
             .padding([.leading, .trailing], 16.5)
         }
@@ -49,11 +62,16 @@ struct QRVaccineScannerView: View {
     }
     
     func handleScan(result: Result<ScanResult, ScanError>) {
-       isShowingScanner = false
+        isShowingScanner = false
         
         switch result {
         case .success(let result):
-            qrCodeInfo = result.string
+            
+            Task {
+                self.passport = try await CreateAccountManager.processPassport(with: result.string)
+            }
+            
+            shouldNavigate = true
         default:
             fatalError()
         }

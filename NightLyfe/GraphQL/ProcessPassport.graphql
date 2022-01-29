@@ -1,0 +1,5 @@
+mutation ProcessPassport($input: ParsePassport!) {
+    processPassport(input: $input) {
+        ...PassportFragment
+  }
+}

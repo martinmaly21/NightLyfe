@@ -11,8 +11,10 @@ public struct NewLocation: GraphQLMapConvertible {
   ///   - name
   ///   - type
   ///   - mustScreen
-  public init(name: String, type: LocationTypes, mustScreen: Bool) {
-    graphQLMap = ["name": name, "type": type, "mustScreen": mustScreen]
+  ///   - lat
+  ///   - long
+  public init(name: String, type: LocationTypes, mustScreen: Bool, lat: Double, long: Double) {
+    graphQLMap = ["name": name, "type": type, "mustScreen": mustScreen, "lat": lat, "long": long]
   }
 
   public var name: String {
@@ -39,6 +41,24 @@ public struct NewLocation: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "mustScreen")
+    }
+  }
+
+  public var lat: Double {
+    get {
+      return graphQLMap["lat"] as! Double
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "lat")
+    }
+  }
+
+  public var long: Double {
+    get {
+      return graphQLMap["long"] as! Double
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "long")
     }
   }
 }
@@ -94,6 +114,75 @@ public enum LocationTypes: RawRepresentable, Equatable, Hashable, CaseIterable, 
       .club,
       .store,
       .other,
+    ]
+  }
+}
+
+public struct ParsePassport: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  /// - Parameters:
+  ///   - data
+  ///   - issuer
+  public init(data: String, issuer: PassportIssuers) {
+    graphQLMap = ["data": data, "issuer": issuer]
+  }
+
+  public var data: String {
+    get {
+      return graphQLMap["data"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "data")
+    }
+  }
+
+  public var issuer: PassportIssuers {
+    get {
+      return graphQLMap["issuer"] as! PassportIssuers
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "issuer")
+    }
+  }
+}
+
+public enum PassportIssuers: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+  public typealias RawValue = String
+  case ontario
+  case quebec
+  /// Auto generated constant for unknown enum values
+  case __unknown(RawValue)
+
+  public init?(rawValue: RawValue) {
+    switch rawValue {
+      case "ONTARIO": self = .ontario
+      case "QUEBEC": self = .quebec
+      default: self = .__unknown(rawValue)
+    }
+  }
+
+  public var rawValue: RawValue {
+    switch self {
+      case .ontario: return "ONTARIO"
+      case .quebec: return "QUEBEC"
+      case .__unknown(let value): return value
+    }
+  }
+
+  public static func == (lhs: PassportIssuers, rhs: PassportIssuers) -> Bool {
+    switch (lhs, rhs) {
+      case (.ontario, .ontario): return true
+      case (.quebec, .quebec): return true
+      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+      default: return false
+    }
+  }
+
+  public static var allCases: [PassportIssuers] {
+    return [
+      .ontario,
+      .quebec,
     ]
   }
 }
@@ -300,6 +389,122 @@ public final class LocationsQuery: GraphQLQuery {
   }
 }
 
+public final class ProcessPassportMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation ProcessPassport($input: ParsePassport!) {
+      processPassport(input: $input) {
+        __typename
+        ...PassportFragment
+      }
+    }
+    """
+
+  public let operationName: String = "ProcessPassport"
+
+  public var queryDocument: String {
+    var document: String = operationDefinition
+    document.append("\n" + PassportFragment.fragmentDefinition)
+    return document
+  }
+
+  public var input: ParsePassport
+
+  public init(input: ParsePassport) {
+    self.input = input
+  }
+
+  public var variables: GraphQLMap? {
+    return ["input": input]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("processPassport", arguments: ["input": GraphQLVariable("input")], type: .nonNull(.object(ProcessPassport.selections))),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(processPassport: ProcessPassport) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "processPassport": processPassport.resultMap])
+    }
+
+    public var processPassport: ProcessPassport {
+      get {
+        return ProcessPassport(unsafeResultMap: resultMap["processPassport"]! as! ResultMap)
+      }
+      set {
+        resultMap.updateValue(newValue.resultMap, forKey: "processPassport")
+      }
+    }
+
+    public struct ProcessPassport: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Passport"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLFragmentSpread(PassportFragment.self),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(firstname: String, lastname: String) {
+        self.init(unsafeResultMap: ["__typename": "Passport", "firstname": firstname, "lastname": lastname])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var fragments: Fragments {
+        get {
+          return Fragments(unsafeResultMap: resultMap)
+        }
+        set {
+          resultMap += newValue.resultMap
+        }
+      }
+
+      public struct Fragments {
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public var passportFragment: PassportFragment {
+          get {
+            return PassportFragment(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
+        }
+      }
+    }
+  }
+}
+
 public struct LocationFragment: GraphQLFragment {
   /// The raw GraphQL definition of this fragment.
   public static let fragmentDefinition: String =
@@ -344,6 +549,65 @@ public struct LocationFragment: GraphQLFragment {
     }
     set {
       resultMap.updateValue(newValue, forKey: "name")
+    }
+  }
+}
+
+public struct PassportFragment: GraphQLFragment {
+  /// The raw GraphQL definition of this fragment.
+  public static let fragmentDefinition: String =
+    """
+    fragment PassportFragment on Passport {
+      __typename
+      firstname
+      lastname
+    }
+    """
+
+  public static let possibleTypes: [String] = ["Passport"]
+
+  public static var selections: [GraphQLSelection] {
+    return [
+      GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+      GraphQLField("firstname", type: .nonNull(.scalar(String.self))),
+      GraphQLField("lastname", type: .nonNull(.scalar(String.self))),
+    ]
+  }
+
+  public private(set) var resultMap: ResultMap
+
+  public init(unsafeResultMap: ResultMap) {
+    self.resultMap = unsafeResultMap
+  }
+
+  public init(firstname: String, lastname: String) {
+    self.init(unsafeResultMap: ["__typename": "Passport", "firstname": firstname, "lastname": lastname])
+  }
+
+  public var __typename: String {
+    get {
+      return resultMap["__typename"]! as! String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "__typename")
+    }
+  }
+
+  public var firstname: String {
+    get {
+      return resultMap["firstname"]! as! String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "firstname")
+    }
+  }
+
+  public var lastname: String {
+    get {
+      return resultMap["lastname"]! as! String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "lastname")
     }
   }
 }

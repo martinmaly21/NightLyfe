@@ -1,0 +1,4 @@
+fragment PassportFragment on Passport {
+    firstname
+    lastname
+}
