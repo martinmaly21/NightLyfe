@@ -10,10 +10,10 @@ import Apollo
 
 
 class LocationManager {
-    static func fetchLocations() async throws -> [String] {
+    static func fetchLocations() async throws -> [LocationFragment] {
         let query = LocationsQuery()
         
-        typealias FetchLocationsContinuation = CheckedContinuation<[String], Error>
+        typealias FetchLocationsContinuation = CheckedContinuation<[LocationFragment], Error>
         return try await withCheckedThrowingContinuation { (continuation: FetchLocationsContinuation) in
             _ = apollo.fetch(
                 query: query,
@@ -26,11 +26,11 @@ class LocationManager {
                         fatalError()
                     case .success(let suc):
                         if let locations = suc.data?.locations {
-                            let names = locations.compactMap {
-                                $0?.fragments.locationFragment.name
+                            let locationFragments = locations.compactMap {
+                                $0?.fragments.locationFragment
                             }
                             
-                            continuation.resume(returning: names)
+                            continuation.resume(returning: locationFragments)
                         } else {
                             fatalError()
                         }

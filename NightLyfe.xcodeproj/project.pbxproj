@@ -14,6 +14,7 @@
 		50F0731A27A5446500820324 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F0731927A5446500820324 /* LocationManager.swift */; };
 		50F0731C27A544E100820324 /* Locations.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 50F0731B27A544E100820324 /* Locations.graphql */; };
 		50F0731E27A5481F00820324 /* LocationFragment.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 50F0731D27A5481F00820324 /* LocationFragment.graphql */; };
+		50F0732027A54AF700820324 /* LocationCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F0731F27A54AF700820324 /* LocationCellView.swift */; };
 		50F42D6A27A5392A00E046D7 /* AddLocation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 50F42D6927A5392A00E046D7 /* AddLocation.graphql */; };
 		50F42D6D27A53B0300E046D7 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F42D6C27A53B0300E046D7 /* API.swift */; };
 		50F42D7027A53B8900E046D7 /* ApolloManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F42D6F27A53B8900E046D7 /* ApolloManager.swift */; };
@@ -32,6 +33,7 @@
 		50F0731927A5446500820324 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		50F0731B27A544E100820324 /* Locations.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Locations.graphql; sourceTree = "<group>"; };
 		50F0731D27A5481F00820324 /* LocationFragment.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = LocationFragment.graphql; sourceTree = "<group>"; };
+		50F0731F27A54AF700820324 /* LocationCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCellView.swift; sourceTree = "<group>"; };
 		50F42D6927A5392A00E046D7 /* AddLocation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = AddLocation.graphql; sourceTree = "<group>"; };
 		50F42D6C27A53B0300E046D7 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		50F42D6F27A53B8900E046D7 /* ApolloManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloManager.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			children = (
 				50F0731727A543B900820324 /* EntryView.swift */,
 				50F42D7527A540A700E046D7 /* LocationView.swift */,
+				50F0731F27A54AF700820324 /* LocationCellView.swift */,
 			);
 			path = "SwiftUI Views";
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				50F42D7627A540A700E046D7 /* LocationView.swift in Sources */,
 				50F0731A27A5446500820324 /* LocationManager.swift in Sources */,
 				50F42D7327A53BE800E046D7 /* Array.swift in Sources */,
+				50F0732027A54AF700820324 /* LocationCellView.swift in Sources */,
 				50F42D6D27A53B0300E046D7 /* API.swift in Sources */,
 				50EC953627A51AAF009D4294 /* NightLyfeApp.swift in Sources */,
 			);

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LocationView: View {
     @State var isFetching = false
-    @State var locations: [String] = []
+    @State var locations: [LocationFragment] = []
     
     let columns = [
         //change minimum to screensize / 3
@@ -19,16 +19,22 @@ struct LocationView: View {
     ]
     
     var body: some View {
-        LazyVGrid(columns: columns) {
-            if isFetching {
-                ProgressView()
-                    .progressViewStyle(.circular)
-            } else {
-                ForEach(locations, id: \.self) { location in
-                    Text(location)
+        VStack {
+            LazyVGrid(columns: columns) {
+                if isFetching {
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                } else {
+                    ForEach(0..<locations.count, id: \.self) { index in
+                        LocationCellView(locationFagment: locations[index])
+                    }
                 }
             }
+            .padding()
+            
+            Spacer()
         }
+        .navigationTitle("Locations")
         .task {
             self.isFetching = true
             self.locations = try! await LocationManager.fetchLocations()
