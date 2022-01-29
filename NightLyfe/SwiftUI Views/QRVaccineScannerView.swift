@@ -13,24 +13,26 @@ struct QRVaccineScannerView: View {
     @State private var qrCodeInfo: String?
     
     var body: some View {
-        VStack {
-            Button(
-                action: {
-                    isShowingScanner = true
-                },
-                label: {
-                    Text("Tap to scan your QR Code")
+        OnboardingBackground {
+            VStack {
+                Button(
+                    action: {
+                        isShowingScanner = true
+                    },
+                    label: {
+                        Text("Tap to scan your QR Code")
+                    }
+                )
+                    .sheet(isPresented: $isShowingScanner) {
+                        CodeScannerView(codeTypes: [.qr], completion: handleScan)
+                    }
+                
+                if let qrCodeInfo = qrCodeInfo {
+                    Text(qrCodeInfo)
                 }
-            )
-                .sheet(isPresented: $isShowingScanner) {
-                    CodeScannerView(codeTypes: [.qr], completion: handleScan)
-                }
-            
-            if let qrCodeInfo = qrCodeInfo {
-                Text(qrCodeInfo)
             }
         }
-        
+        .navigationTitle("Upload Vaccine")
     }
     
     func handleScan(result: Result<ScanResult, ScanError>) {

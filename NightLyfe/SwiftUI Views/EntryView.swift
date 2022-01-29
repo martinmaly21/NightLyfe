@@ -13,19 +13,7 @@ struct EntryView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
-                VStack {
-                    Spacer()
-                    
-                    Image(uiImage: UIImage(named: "newyorkskyline")!)
-                        .resizable()
-                        .renderingMode(.template)
-                        .foregroundColor(.white)
-                        .opacity(0.07)
-                        .frame(width: 700, height: 325)
-                        .font(.title)
-                }
-                
+            OnboardingBackground {
                 Image(uiImage: UIImage(named: "NightLyfeLogoWhiteText")!)
                     .resizable()
                     .frame(width: 250, height: 180)
@@ -77,28 +65,6 @@ struct EntryView: View {
                     }
                 )
             }
-            .edgesIgnoringSafeArea(.all)
-            .frame(maxWidth: .infinity,  maxHeight: .infinity)
-            .background(
-                LinearGradient(gradient: Gradient(colors: Color.gradient), startPoint: .top, endPoint: .bottom)
-                    .edgesIgnoringSafeArea(.all)
-            )
         }
-        
-    }
-}
-
-struct EntryView_Previews: PreviewProvider {
-    static var previews: some View {
-        EntryView()
-    }
-}
-
-extension Color {
-    static var gradient: Array<Color> {
-        return [
-            Color(red: 1/255, green: 120/255, blue: 200/255, opacity: 1.0),
-            Color(red: 0/255, green: 0/255, blue: 0/255, opacity: 1.0)
-        ]
     }
 }
