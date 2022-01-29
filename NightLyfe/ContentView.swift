@@ -9,14 +9,29 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        
         ZStack {
+            VStack {
+                Spacer()
+                
+                Image(uiImage: UIImage(named: "newyorkskyline")!)
+                    .resizable()
+                    .renderingMode(.template)
+                    .foregroundColor(.white)
+                    .opacity(0.07)
+                    .frame(width: 700, height: 325)
+                    .font(.title)
+            }
+            
             Image(uiImage: UIImage(named: "NightLyfeLogoWhiteText")!)
                 .resizable()
                 .frame(width: 250, height: 180)
                 .font(.title)
                 .padding()
-                
+                .offset(x: 0, y: -125)
         }
+        
+        .edgesIgnoringSafeArea(.all)
         .frame(maxWidth: .infinity,  maxHeight: .infinity)
         .background(
               LinearGradient(gradient: Gradient(colors: Color.gradient), startPoint: .top, endPoint: .bottom)
