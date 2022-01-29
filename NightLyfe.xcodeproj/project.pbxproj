@@ -75,14 +75,14 @@
 		50EC953427A51AAF009D4294 /* NightLyfe */ = {
 			isa = PBXGroup;
 			children = (
+				50EC954327A5227B009D4294 /* Info.plist */,
+				50EC953927A51AB0009D4294 /* Assets.xcassets */,
+				50F42D6C27A53B0300E046D7 /* API.swift */,
+				50EC953527A51AAF009D4294 /* NightLyfeApp.swift */,
 				50F42D7127A53BDD00E046D7 /* Extension */,
 				50F42D6E27A53B7B00E046D7 /* Manager */,
-				50F42D6C27A53B0300E046D7 /* API.swift */,
 				50F42D6827A5388E00E046D7 /* GraphQL */,
-				50EC954327A5227B009D4294 /* Info.plist */,
-				50EC953527A51AAF009D4294 /* NightLyfeApp.swift */,
-				50EC953727A51AAF009D4294 /* EntryView.swift */,
-				50EC953927A51AB0009D4294 /* Assets.xcassets */,
+				50F42D7427A53FF600E046D7 /* SwiftUI Views */,
 				50EC953B27A51AB0009D4294 /* Preview Content */,
 			);
 			path = NightLyfe;
@@ -118,6 +118,14 @@
 				50F42D7227A53BE800E046D7 /* Array.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		50F42D7427A53FF600E046D7 /* SwiftUI Views */ = {
+			isa = PBXGroup;
+			children = (
+				50EC953727A51AAF009D4294 /* EntryView.swift */,
+			);
+			path = "SwiftUI Views";
 			sourceTree = "<group>";
 		};
 		B91C455E94D455787E2962FF /* Pods */ = {
