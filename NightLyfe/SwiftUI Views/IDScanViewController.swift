@@ -10,7 +10,10 @@ import UIKit
 import Microblink
 
 struct IDScanViewController: UIViewControllerRepresentable {
+    @Environment(\.presentationMode) var presentationMode
+    
     @Binding var scannedIDResult: MBBlinkIdRecognizerResult?
+    
     
     var blinkIdRecognizer = MBBlinkIdRecognizer()
     
@@ -19,8 +22,6 @@ struct IDScanViewController: UIViewControllerRepresentable {
     }
     
     func makeUIViewController(context: Context) -> UIViewController {
-        
-        
         self.blinkIdRecognizer.returnFullDocumentImage = true
         
         /** Create BlinkID settings */
@@ -46,7 +47,7 @@ struct IDScanViewController: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-   
+        
     }
     
     class Coordinator: NSObject, MBBlinkIdOverlayViewControllerDelegate {
@@ -64,6 +65,9 @@ struct IDScanViewController: UIViewControllerRepresentable {
                 let result = self.parent.blinkIdRecognizer.result
                 
                 print("Valid!!: \(result)")
+                
+                parent.presentationMode.wrappedValue.dismiss()
+
             default:
                 fatalError()
             }
