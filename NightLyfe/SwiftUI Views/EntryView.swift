@@ -11,6 +11,8 @@ struct EntryView: View {
     @State private var shouldNavigateToLogIn = false
     @State private var shouldNavigateToSignUp = false
     
+    let gradient = LinearGradient(gradient: Gradient(colors: [Color.white, Color.white]), startPoint: .topLeading, endPoint: .bottomTrailing)
+    
     var body: some View {
         NavigationView {
             AppBackground {
@@ -19,30 +21,38 @@ struct EntryView: View {
                     .frame(width: 364, height: 240)
                     .font(.title)
                     .padding()
-                    .offset(x: 0, y: -125)
+                    .offset(x: 0, y: -170)
+                
+                Spacer()
+                    .frame(height: 30)
                 
                 VStack(spacing: 12) {
-                    Button(
-                        action: {
-                            self.shouldNavigateToSignUp = true
-                        },
-                        label: {
-                            Text("Sign up")
-                                .foregroundColor(.white)
-                                .font(.headline)
-                        }
-                    )
+                    Button(action: {
+                        self.shouldNavigateToSignUp = true
+                    }
+                    ) {
+                        Text("Sign up")
+                            .frame(width: 200, height: 35)
+                            .foregroundColor(.white)
+                            .font(.headline)
+                    }
+                    .background(Capsule()
+                        .stroke(gradient, lineWidth: 2)
+                        .saturation(1.8))
                     
-                    Button(
-                        action: {
-                            self.shouldNavigateToLogIn = true
-                        },
-                        label: {
-                            Text("Log in")
-                                .foregroundColor(.white)
-                                .font(.headline)
-                        }
-                    )
+                    
+                    Button(action: {
+                        self.shouldNavigateToLogIn = true
+                        
+                    }) {
+                        Text("Log in")
+                            .frame(width: 200, height: 35)
+                            .foregroundColor(.white)
+                            .font(.headline)
+                    }
+                    .background(Capsule()
+                        .stroke(gradient, lineWidth: 2)
+                        .saturation(1.8))
                 }
                 
                 NavigationLink(
