@@ -463,8 +463,8 @@ public final class ProcessPassportMutation: GraphQLMutation {
         self.resultMap = unsafeResultMap
       }
 
-      public init(firstname: String, lastname: String) {
-        self.init(unsafeResultMap: ["__typename": "Passport", "firstname": firstname, "lastname": lastname])
+      public init(firstname: String, lastname: String, dateofbirth: String, firstDate: String, firstBrand: String, secondDate: String, secondBrand: String, boosterDate: String, boosterBrand: String) {
+        self.init(unsafeResultMap: ["__typename": "Passport", "firstname": firstname, "lastname": lastname, "dateofbirth": dateofbirth, "first_date": firstDate, "first_brand": firstBrand, "second_date": secondDate, "second_brand": secondBrand, "booster_date": boosterDate, "booster_brand": boosterBrand])
       }
 
       public var __typename: String {
@@ -561,6 +561,13 @@ public struct PassportFragment: GraphQLFragment {
       __typename
       firstname
       lastname
+      dateofbirth
+      first_date
+      first_brand
+      second_date
+      second_brand
+      booster_date
+      booster_brand
     }
     """
 
@@ -571,6 +578,13 @@ public struct PassportFragment: GraphQLFragment {
       GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
       GraphQLField("firstname", type: .nonNull(.scalar(String.self))),
       GraphQLField("lastname", type: .nonNull(.scalar(String.self))),
+      GraphQLField("dateofbirth", type: .nonNull(.scalar(String.self))),
+      GraphQLField("first_date", type: .nonNull(.scalar(String.self))),
+      GraphQLField("first_brand", type: .nonNull(.scalar(String.self))),
+      GraphQLField("second_date", type: .nonNull(.scalar(String.self))),
+      GraphQLField("second_brand", type: .nonNull(.scalar(String.self))),
+      GraphQLField("booster_date", type: .nonNull(.scalar(String.self))),
+      GraphQLField("booster_brand", type: .nonNull(.scalar(String.self))),
     ]
   }
 
@@ -580,8 +594,8 @@ public struct PassportFragment: GraphQLFragment {
     self.resultMap = unsafeResultMap
   }
 
-  public init(firstname: String, lastname: String) {
-    self.init(unsafeResultMap: ["__typename": "Passport", "firstname": firstname, "lastname": lastname])
+  public init(firstname: String, lastname: String, dateofbirth: String, firstDate: String, firstBrand: String, secondDate: String, secondBrand: String, boosterDate: String, boosterBrand: String) {
+    self.init(unsafeResultMap: ["__typename": "Passport", "firstname": firstname, "lastname": lastname, "dateofbirth": dateofbirth, "first_date": firstDate, "first_brand": firstBrand, "second_date": secondDate, "second_brand": secondBrand, "booster_date": boosterDate, "booster_brand": boosterBrand])
   }
 
   public var __typename: String {
@@ -608,6 +622,69 @@ public struct PassportFragment: GraphQLFragment {
     }
     set {
       resultMap.updateValue(newValue, forKey: "lastname")
+    }
+  }
+
+  public var dateofbirth: String {
+    get {
+      return resultMap["dateofbirth"]! as! String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "dateofbirth")
+    }
+  }
+
+  public var firstDate: String {
+    get {
+      return resultMap["first_date"]! as! String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "first_date")
+    }
+  }
+
+  public var firstBrand: String {
+    get {
+      return resultMap["first_brand"]! as! String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "first_brand")
+    }
+  }
+
+  public var secondDate: String {
+    get {
+      return resultMap["second_date"]! as! String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "second_date")
+    }
+  }
+
+  public var secondBrand: String {
+    get {
+      return resultMap["second_brand"]! as! String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "second_brand")
+    }
+  }
+
+  public var boosterDate: String {
+    get {
+      return resultMap["booster_date"]! as! String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "booster_date")
+    }
+  }
+
+  public var boosterBrand: String {
+    get {
+      return resultMap["booster_brand"]! as! String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "booster_brand")
     }
   }
 }

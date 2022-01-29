@@ -33,6 +33,7 @@ struct AppBackground<Content: View>: View {
                     .font(.title)
             }
             }
+            .padding()
         }
         .edgesIgnoringSafeArea(.bottom)
         .background(

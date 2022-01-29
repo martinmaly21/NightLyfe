@@ -1,4 +1,14 @@
 fragment PassportFragment on Passport {
     firstname
     lastname
+    dateofbirth
+    
+    first_date
+    first_brand
+    
+    second_date
+    second_brand
+    
+    booster_date
+    booster_brand
 }

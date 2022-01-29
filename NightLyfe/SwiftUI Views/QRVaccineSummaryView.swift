@@ -12,26 +12,139 @@ struct QRVaccineSummaryView: View {
     
     var body: some View {
         AppBackground {
-            VStack {
-                HStack {
-                    Text("First name:")
-                        .font(.subheadline)
-                        .foregroundColor(.white)
+            VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 20) {
+                    VStack(spacing: 5) {
+                        HStack(alignment: .bottom) {
+                            Text("First name:")
+                                .font(.title2)
+                                .bold()
+                                .foregroundColor(.black)
+                            
+                            Text(passport.firstname)
+                                .font(.title2)
+                                .foregroundColor(.black)
+                            
+                            Spacer()
+                        }
+                        
+                        HStack(alignment: .bottom) {
+                            Text("Last name:")
+                                .font(.title2)
+                                .bold()
+                                .foregroundColor(.black)
+                            
+                            Text(passport.lastname)
+                                .font(.title2)
+                                .foregroundColor(.black)
+                            
+                            Spacer()
+                        }
+                        
+                        HStack(alignment: .bottom) {
+                            Text("Birthday:")
+                                .font(.title2)
+                                .bold()
+                                .foregroundColor(.black)
+                            
+                            Text(passport.dateofbirth)
+                                .font(.title2)
+                                .foregroundColor(.black)
+                            
+                            Spacer()
+                        }
+                    }
                     
-                    Text(passport.firstname)
-                        .font(.body)
-                        .foregroundColor(.white)
-                }
-                
-                HStack {
-                    Text("Last name:")
-                        .font(.subheadline)
-                        .foregroundColor(.white)
+                    VStack(spacing: 5) {
+                        HStack(alignment: .bottom) {
+                            Text("First vaccine date:")
+                                .font(.title2)
+                                .bold()
+                                .foregroundColor(.black)
+                            
+                            Text(passport.firstDate)
+                                .font(.title2)
+                                .foregroundColor(.black)
+                            
+                            Spacer()
+                        }
+                        
+                        HStack(alignment: .bottom) {
+                            Text("First vaccine brand:")
+                                .font(.title2)
+                                .bold()
+                                .foregroundColor(.black)
+                            
+                            Text(passport.firstBrand)
+                                .font(.title2)
+                                .foregroundColor(.black)
+                            
+                            Spacer()
+                        }
+                    }
                     
-                    Text(passport.lastname)
-                        .font(.body)
-                        .foregroundColor(.white)
+                    VStack(spacing: 5) {
+                        HStack(alignment: .bottom) {
+                            Text("Second vaccine date:")
+                                .font(.title2)
+                                .bold()
+                                .foregroundColor(.black)
+                            
+                            Text(passport.secondDate)
+                                .font(.title2)
+                                .foregroundColor(.black)
+                            
+                            Spacer()
+                        }
+                        
+                        HStack(alignment: .bottom) {
+                            Text("Second vaccine brand:")
+                                .font(.title2)
+                                .bold()
+                                .foregroundColor(.black)
+                            
+                            Text(passport.secondBrand)
+                                .font(.title2)
+                                .foregroundColor(.black)
+                            
+                            Spacer()
+                        }
+                    }
+                    
+                    VStack(spacing: 5) {
+                        HStack(alignment: .bottom) {
+                            Text("First vaccine date:")
+                                .font(.title2)
+                                .bold()
+                                .foregroundColor(.black)
+                            
+                            Text(passport.boosterDate)
+                                .font(.title2)
+                                .foregroundColor(.black)
+                            
+                            Spacer()
+                        }
+                        
+                        HStack(alignment: .bottom) {
+                            Text("First vaccine brand:")
+                                .font(.title2)
+                                .bold()
+                                .foregroundColor(.black)
+                            
+                            Text(passport.boosterBrand)
+                                .font(.title2)
+                                .foregroundColor(.black)
+                            
+                            Spacer()
+                        }
+                    }
                 }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .fill(Color.white)
+                )
                 
                 Spacer()
             }
