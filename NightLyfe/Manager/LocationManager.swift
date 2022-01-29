@@ -27,7 +27,7 @@ class LocationManager {
                     case .success(let suc):
                         if let locations = suc.data?.locations {
                             let names = locations.compactMap {
-                                $0?.name
+                                $0?.fragments.locationFragment.name
                             }
                             
                             continuation.resume(returning: names)

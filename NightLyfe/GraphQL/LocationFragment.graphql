@@ -1,0 +1,3 @@
+fragment LocationFragment on Location {
+    name
+}

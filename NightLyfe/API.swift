@@ -198,12 +198,18 @@ public final class LocationsQuery: GraphQLQuery {
     query Locations {
       locations {
         __typename
-        name
+        ...LocationFragment
       }
     }
     """
 
   public let operationName: String = "Locations"
+
+  public var queryDocument: String {
+    var document: String = operationDefinition
+    document.append("\n" + LocationFragment.fragmentDefinition)
+    return document
+  }
 
   public init() {
   }
@@ -242,7 +248,7 @@ public final class LocationsQuery: GraphQLQuery {
       public static var selections: [GraphQLSelection] {
         return [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("name", type: .nonNull(.scalar(String.self))),
+          GraphQLFragmentSpread(LocationFragment.self),
         ]
       }
 
@@ -265,14 +271,79 @@ public final class LocationsQuery: GraphQLQuery {
         }
       }
 
-      public var name: String {
+      public var fragments: Fragments {
         get {
-          return resultMap["name"]! as! String
+          return Fragments(unsafeResultMap: resultMap)
         }
         set {
-          resultMap.updateValue(newValue, forKey: "name")
+          resultMap += newValue.resultMap
         }
       }
+
+      public struct Fragments {
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public var locationFragment: LocationFragment {
+          get {
+            return LocationFragment(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
+        }
+      }
+    }
+  }
+}
+
+public struct LocationFragment: GraphQLFragment {
+  /// The raw GraphQL definition of this fragment.
+  public static let fragmentDefinition: String =
+    """
+    fragment LocationFragment on Location {
+      __typename
+      name
+    }
+    """
+
+  public static let possibleTypes: [String] = ["Location"]
+
+  public static var selections: [GraphQLSelection] {
+    return [
+      GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+      GraphQLField("name", type: .nonNull(.scalar(String.self))),
+    ]
+  }
+
+  public private(set) var resultMap: ResultMap
+
+  public init(unsafeResultMap: ResultMap) {
+    self.resultMap = unsafeResultMap
+  }
+
+  public init(name: String) {
+    self.init(unsafeResultMap: ["__typename": "Location", "name": name])
+  }
+
+  public var __typename: String {
+    get {
+      return resultMap["__typename"]! as! String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "__typename")
+    }
+  }
+
+  public var name: String {
+    get {
+      return resultMap["name"]! as! String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "name")
     }
   }
 }
