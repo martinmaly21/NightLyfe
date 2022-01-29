@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Microblink
 
 @main
 struct NightLyfeApp: App {
@@ -16,6 +17,16 @@ struct NightLyfeApp: App {
         
         //Use this if NavigationBarTitle is with displayMode = .inline
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        MBMicroblinkSDK.shared().setLicenseResource(
+            "license",
+            withExtension: "key",
+            inSubdirectory: "",
+            for: Bundle.main,
+            errorCallback: { error in
+                fatalError()
+            }
+        )
     }
     
     var body: some Scene {

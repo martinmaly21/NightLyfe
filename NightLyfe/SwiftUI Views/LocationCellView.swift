@@ -14,7 +14,6 @@ struct LocationCellView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 5, style: .continuous)
                 .strokeBorder(Color.gray, lineWidth: 0.5)
-
             
             Text(locationFagment.name)
         }

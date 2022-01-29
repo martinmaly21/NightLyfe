@@ -13,6 +13,8 @@ struct IDScannerView: View {
     @State private var id: ScannedID?
     @State private var shouldNavigate = false
     
+    @State private var scannedIDResult: MBBlinkIdRecognizerResult?
+    
     var body: some View {
         AppBackground {
             VStack {
@@ -42,7 +44,7 @@ struct IDScannerView: View {
                             .opacity(0.2)
                     )
                     .sheet(isPresented: $isShowingScanner) {
-                        Text("TODO: Add scanner")
+                        IDScanViewController(scannedIDResult: $scannedIDResult)
                     }
                     
                     Text("Your identification card must match your immunization records scanned on the previous page.")
