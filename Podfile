@@ -6,5 +6,6 @@ target 'NightLyfe' do
   use_frameworks!
 
   # Pods for NightLyfe
+  pod "Apollo"
 
 end
