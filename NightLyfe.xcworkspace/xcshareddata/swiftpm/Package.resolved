@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "BlinkID",
+        "repositoryURL": "https://github.com/BlinkID/blinkid-swift-package",
+        "state": {
+          "branch": "main",
+          "revision": "8d53b1c504dd8f255f8d1c7855410fe7360056fe",
+          "version": null
+        }
+      },
+      {
         "package": "CodeScanner",
         "repositoryURL": "https://github.com/twostraws/CodeScanner",
         "state": {
