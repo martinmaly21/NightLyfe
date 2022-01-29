@@ -105,6 +105,7 @@
 				50EC952E27A51AAF009D4294 /* Sources */,
 				50EC952F27A51AAF009D4294 /* Frameworks */,
 				50EC953027A51AAF009D4294 /* Resources */,
+				1E7B883B343B1FA1893AB50F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -161,6 +162,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1E7B883B343B1FA1893AB50F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NightLyfe/Pods-NightLyfe-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NightLyfe/Pods-NightLyfe-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NightLyfe/Pods-NightLyfe-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		314503801E4FDE71680DA5D8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
