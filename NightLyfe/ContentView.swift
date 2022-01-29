@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         ZStack {
-            Image(uiImage: UIImage(named: "NightLyfeLogoBlackText")!)
+            Image(uiImage: UIImage(named: "NightLyfeLogoWhiteText")!)
                 .resizable()
                 .frame(width: 250, height: 180)
                 .font(.title)
@@ -34,10 +34,7 @@ extension Color {
   static var gradient: Array<Color> {
     return [
       Color(red: 1/255, green: 120/255, blue: 200/255, opacity: 1.0),
-      Color(red: 0/255, green: 0/255, blue: 0/255, opacity: 1.0),
-//      Color(red: 100/255, green: 100/255, blue: 98/255, opacity: 0.5),
-//      Color(red: 90/255, green: 120/255, blue: 100/255, opacity: 0.2),
-//      Color(red: 50/255, green: 150/255, blue: 100/255, opacity: 1.0)
+      Color(red: 0/255, green: 0/255, blue: 0/255, opacity: 1.0)
     ]
   }
 }
