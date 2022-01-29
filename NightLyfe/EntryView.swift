@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  EntryView.swift
 //  NightLyfe
 //
 //  Created by Martin Maly on 2022-01-29.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Apollo
 
-struct ContentView: View {
+struct EntryView: View {
     var body: some View {
         
         ZStack {
@@ -43,7 +43,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        EntryView()
     }
 }
 extension Color {
