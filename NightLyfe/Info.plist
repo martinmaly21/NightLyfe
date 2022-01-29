@@ -9,5 +9,7 @@
 		<key>UIImageName</key>
 		<string>NightLyfeLogoWhiteText</string>
 	</dict>
+	<key>GRAPHQL_ENDPOINT</key>
+	<string>$(GRAPHQL_ENDPOINT)</string>
 </dict>
 </plist>

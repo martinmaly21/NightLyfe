@@ -90,7 +90,6 @@
 				EE1BE57B990898714566B325 /* Pods-NightLyfe.debug.xcconfig */,
 				D2B06D2D1DBE0290B2D91BF5 /* Pods-NightLyfe.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -101,6 +100,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50EC954027A51AB0009D4294 /* Build configuration list for PBXNativeTarget "NightLyfe" */;
 			buildPhases = (
+				5053E29327A5345A000E044B /* Download new schema.json */,
 				314503801E4FDE71680DA5D8 /* [CP] Check Pods Manifest.lock */,
 				50EC952E27A51AAF009D4294 /* Sources */,
 				50EC952F27A51AAF009D4294 /* Frameworks */,
@@ -200,6 +200,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		5053E29327A5345A000E044B /* Download new schema.json */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Download new schema.json";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set +e\ncd \"${SRCROOT}/${PROJECT_NAME}\"\nfunction downloadSchema {\napollo schema:download --endpoint=\"http://lanigansmith.com:8080/query\" $SCRIPT_OUTPUT_FILE_0\n}\nfunction reportError {\necho \"\"\necho \"error: Couldn't download Schema\"\n}\n\ndownloadSchema || reportError\n\nset -e\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
