@@ -13,10 +13,10 @@ struct EntryView: View {
     
     var body: some View {
         NavigationView {
-            OnboardingBackground {
+            AppBackground {
                 Image(uiImage: UIImage(named: "NightLyfeLogoWhiteText")!)
                     .resizable()
-                    .frame(width: 250, height: 180)
+                    .frame(width: 364, height: 240)
                     .font(.title)
                     .padding()
                     .offset(x: 0, y: -125)
@@ -66,5 +66,6 @@ struct EntryView: View {
                 )
             }
         }
+        .accentColor(.white)
     }
 }

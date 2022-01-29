@@ -1,5 +1,5 @@
 //
-//  OnboardingBackground.swift
+//  AppBackground.swift
 //  NightLyfe
 //
 //  Created by Martin Maly on 2022-01-29.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OnboardingBackground<Content: View>: View {
+struct AppBackground<Content: View>: View {
     let content: Content
     
     init(@ViewBuilder content: () -> Content) {
@@ -16,7 +16,9 @@ struct OnboardingBackground<Content: View>: View {
     
     var body: some View {
         ZStack {
+            GeometryReader { geometry in
             content
+                    .frame(width: geometry.size.width, height: geometry.size.height)
             
             VStack {
                 Spacer()
@@ -27,11 +29,12 @@ struct OnboardingBackground<Content: View>: View {
                     .foregroundColor(.white)
                     .opacity(0.07)
                     .frame(width: 700, height: 325)
+                    .offset(x: -100, y: 0)
                     .font(.title)
             }
+            }
         }
-        .edgesIgnoringSafeArea(.all)
-        .frame(maxWidth: .infinity,  maxHeight: .infinity)
+        .edgesIgnoringSafeArea(.bottom)
         .background(
             LinearGradient(gradient: Gradient(colors: Color.gradient), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)

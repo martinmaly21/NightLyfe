@@ -13,7 +13,7 @@ struct QRVaccineScannerView: View {
     @State private var qrCodeInfo: String?
     
     var body: some View {
-        OnboardingBackground {
+        AppBackground {
             VStack {
                 Button(
                     action: {
