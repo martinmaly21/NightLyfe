@@ -10,10 +10,10 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         ZStack {
-            Text("NightLyfe")
-                .foregroundColor(.white)
-                .font(.title) 
-                
+            Image(uiImage: UIImage(named: "NightLyfeLogoBlackText")!)
+                .resizable()
+                .frame(width: 250, height: 180)
+                .font(.title)
                 .padding()
                 
         }
