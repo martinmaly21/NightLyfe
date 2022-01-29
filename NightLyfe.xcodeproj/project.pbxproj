@@ -11,6 +11,7 @@
 		50EC953827A51AAF009D4294 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EC953727A51AAF009D4294 /* ContentView.swift */; };
 		50EC953A27A51AB0009D4294 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50EC953927A51AB0009D4294 /* Assets.xcassets */; };
 		50EC953D27A51AB0009D4294 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50EC953C27A51AB0009D4294 /* Preview Assets.xcassets */; };
+		50F42D6A27A5392A00E046D7 /* AddLocation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 50F42D6927A5392A00E046D7 /* AddLocation.graphql */; };
 		5A9FEF8022132CC70ACAF953 /* Pods_NightLyfe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E7478DE1B378BA1A5A50E8 /* Pods_NightLyfe.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,6 +22,7 @@
 		50EC953927A51AB0009D4294 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50EC953C27A51AB0009D4294 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		50EC954327A5227B009D4294 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		50F42D6927A5392A00E046D7 /* AddLocation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = AddLocation.graphql; sourceTree = "<group>"; };
 		C1E7478DE1B378BA1A5A50E8 /* Pods_NightLyfe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NightLyfe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B06D2D1DBE0290B2D91BF5 /* Pods-NightLyfe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NightLyfe.release.xcconfig"; path = "Target Support Files/Pods-NightLyfe/Pods-NightLyfe.release.xcconfig"; sourceTree = "<group>"; };
 		EE1BE57B990898714566B325 /* Pods-NightLyfe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NightLyfe.debug.xcconfig"; path = "Target Support Files/Pods-NightLyfe/Pods-NightLyfe.debug.xcconfig"; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 		50EC953427A51AAF009D4294 /* NightLyfe */ = {
 			isa = PBXGroup;
 			children = (
+				50F42D6827A5388E00E046D7 /* GraphQL */,
 				50EC954327A5227B009D4294 /* Info.plist */,
 				50EC953527A51AAF009D4294 /* NightLyfeApp.swift */,
 				50EC953727A51AAF009D4294 /* ContentView.swift */,
@@ -82,6 +85,14 @@
 				50EC953C27A51AB0009D4294 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		50F42D6827A5388E00E046D7 /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				50F42D6927A5392A00E046D7 /* AddLocation.graphql */,
+			);
+			path = GraphQL;
 			sourceTree = "<group>";
 		};
 		B91C455E94D455787E2962FF /* Pods */ = {
@@ -154,6 +165,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50F42D6A27A5392A00E046D7 /* AddLocation.graphql in Resources */,
 				50EC953D27A51AB0009D4294 /* Preview Assets.xcassets in Resources */,
 				50EC953A27A51AB0009D4294 /* Assets.xcassets in Resources */,
 			);

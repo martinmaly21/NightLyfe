@@ -1,0 +1,5 @@
+mutation AddLocation($input: NewLocation!) {
+    addLocation(input: $input) {
+    mustScreen
+  }
+}
