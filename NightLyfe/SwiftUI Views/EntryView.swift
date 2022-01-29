@@ -60,7 +60,7 @@ struct EntryView: View {
                 NavigationLink(
                     isActive: $shouldNavigateToSignUp,
                     destination: {
-                        LocationView()
+                        QRVaccineScannerView()
                     },
                     label: {
                         EmptyView()

@@ -35,10 +35,12 @@ struct LocationView: View {
             Spacer()
         }
         .navigationTitle("Locations")
-        .task {
-            self.isFetching = true
-            self.locations = try! await LocationManager.fetchLocations()
-            self.isFetching = false
+        .onAppear {
+            Task {
+                self.isFetching = true
+                self.locations = try! await LocationManager.fetchLocations()
+                self.isFetching = false
+            }
         }
     }
     
