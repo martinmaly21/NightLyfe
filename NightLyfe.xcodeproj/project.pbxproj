@@ -11,6 +11,7 @@
 		50EC953827A51AAF009D4294 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EC953727A51AAF009D4294 /* ContentView.swift */; };
 		50EC953A27A51AB0009D4294 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50EC953927A51AB0009D4294 /* Assets.xcassets */; };
 		50EC953D27A51AB0009D4294 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50EC953C27A51AB0009D4294 /* Preview Assets.xcassets */; };
+		5A9FEF8022132CC70ACAF953 /* Pods_NightLyfe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E7478DE1B378BA1A5A50E8 /* Pods_NightLyfe.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,9 @@
 		50EC953927A51AB0009D4294 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50EC953C27A51AB0009D4294 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		50EC954327A5227B009D4294 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C1E7478DE1B378BA1A5A50E8 /* Pods_NightLyfe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NightLyfe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2B06D2D1DBE0290B2D91BF5 /* Pods-NightLyfe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NightLyfe.release.xcconfig"; path = "Target Support Files/Pods-NightLyfe/Pods-NightLyfe.release.xcconfig"; sourceTree = "<group>"; };
+		EE1BE57B990898714566B325 /* Pods-NightLyfe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NightLyfe.debug.xcconfig"; path = "Target Support Files/Pods-NightLyfe/Pods-NightLyfe.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,17 +31,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A9FEF8022132CC70ACAF953 /* Pods_NightLyfe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16CC8C3AA4BF14A90DD484BC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C1E7478DE1B378BA1A5A50E8 /* Pods_NightLyfe.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		50EC952927A51AAF009D4294 = {
 			isa = PBXGroup;
 			children = (
 				50EC953427A51AAF009D4294 /* NightLyfe */,
 				50EC953327A51AAF009D4294 /* Products */,
+				B91C455E94D455787E2962FF /* Pods */,
+				16CC8C3AA4BF14A90DD484BC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,6 +84,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		B91C455E94D455787E2962FF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EE1BE57B990898714566B325 /* Pods-NightLyfe.debug.xcconfig */,
+				D2B06D2D1DBE0290B2D91BF5 /* Pods-NightLyfe.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -76,6 +101,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50EC954027A51AB0009D4294 /* Build configuration list for PBXNativeTarget "NightLyfe" */;
 			buildPhases = (
+				314503801E4FDE71680DA5D8 /* [CP] Check Pods Manifest.lock */,
 				50EC952E27A51AAF009D4294 /* Sources */,
 				50EC952F27A51AAF009D4294 /* Frameworks */,
 				50EC953027A51AAF009D4294 /* Resources */,
@@ -133,6 +159,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		314503801E4FDE71680DA5D8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NightLyfe-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		50EC952E27A51AAF009D4294 /* Sources */ = {
@@ -265,6 +316,7 @@
 		};
 		50EC954127A51AB0009D4294 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE1BE57B990898714566B325 /* Pods-NightLyfe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -295,6 +347,7 @@
 		};
 		50EC954227A51AB0009D4294 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2B06D2D1DBE0290B2D91BF5 /* Pods-NightLyfe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

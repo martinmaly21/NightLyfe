@@ -1,0 +1,6 @@
+framework module Pods_NightLyfe {
+  umbrella header "Pods-NightLyfe-umbrella.h"
+
+  export *
+  module * { export * }
+}
