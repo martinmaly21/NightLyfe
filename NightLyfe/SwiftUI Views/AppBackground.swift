@@ -31,6 +31,7 @@ struct AppBackground<Content: View>: View {
                     .frame(width: 700, height: 325)
                     .offset(x: -100, y: 15)
                     .font(.title)
+                    .allowsHitTesting(false)
             }
             }
             .padding()
