@@ -9,7 +9,13 @@ import Foundation
 import UIKit
 
 struct ScannedID {
-    let photo: UIImage?
-    let name: String
-    let birthday: String
+    let photo: UIImage
+    let age: Int
+    let address: String
+    
+    let firstName: String
+    let lastName: String
+    
+    let birthday: Date
+    let expirationDate: Date
 }

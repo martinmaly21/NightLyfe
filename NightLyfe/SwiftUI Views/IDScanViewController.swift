@@ -12,7 +12,8 @@ import Microblink
 struct IDScanViewController: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentationMode
     
-    @Binding var scannedIDResult: MBBlinkIdRecognizerResult?
+    @Binding var shouldNavigate: Bool
+    @Binding var scannedIDResult: ScannedID?
     
     
     var blinkIdRecognizer = MBBlinkIdRecognizer()
@@ -23,6 +24,7 @@ struct IDScanViewController: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> UIViewController {
         self.blinkIdRecognizer.returnFullDocumentImage = true
+        self.blinkIdRecognizer.returnFaceImage = true
         
         /** Create BlinkID settings */
         let settings = MBBlinkIdOverlaySettings()
@@ -64,7 +66,16 @@ struct IDScanViewController: UIViewControllerRepresentable {
             case .valid:
                 let result = self.parent.blinkIdRecognizer.result
                 
-                print("Valid!!: \(result)")
+                parent.scannedIDResult = ScannedID(
+                    photo: result.faceImage!.image!,
+                    age: result.age,
+                    address: result.address!,
+                    firstName: result.firstName!,
+                    lastName: result.lastName!,
+                    birthday: result.dateOfBirth!.date!,
+                    expirationDate: result.dateOfExpiry!.date!
+                )
+                parent.shouldNavigate = true
                 
                 parent.presentationMode.wrappedValue.dismiss()
 
@@ -76,5 +87,6 @@ struct IDScanViewController: UIViewControllerRepresentable {
         func blinkIdOverlayViewControllerDidTapClose(_ blinkIdOverlayViewController: MBBlinkIdOverlayViewController) {
             //TODO
         }
+        
     }
 }

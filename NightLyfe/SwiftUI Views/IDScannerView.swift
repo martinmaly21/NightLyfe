@@ -10,10 +10,8 @@ import Microblink
 
 struct IDScannerView: View {
     @State private var isShowingScanner = false
-    @State private var id: ScannedID?
     @State private var shouldNavigate = false
-    
-    @State private var scannedIDResult: MBBlinkIdRecognizerResult?
+    @State private var scannedIDResult: ScannedID?
     
     var body: some View {
         AppBackground {
@@ -23,17 +21,17 @@ struct IDScannerView: View {
                    
                 VStack(spacing: 16) {
                     
-                    Image(systemName: "qrcode.viewfinder")
+                    Image(systemName: "creditcard")
                         .resizable()
                         .renderingMode(.template)
                         .foregroundColor(.white)
-                        .frame(width: 160, height: 160)
+                        .frame(width: 200, height: 160)
                         .offset(x: 0, y: -40)
                     
                     Button(action: {
                         isShowingScanner = true
                     }) {
-                        Text("Tap to scan your QR Code")
+                        Text("Tap to scan your ID")
                             .font(.headline)
                             .padding()
                     }
@@ -44,7 +42,7 @@ struct IDScannerView: View {
                             .opacity(0.2)
                     )
                     .sheet(isPresented: $isShowingScanner) {
-                        IDScanViewController(scannedIDResult: $scannedIDResult)
+                        IDScanViewController(shouldNavigate: $shouldNavigate, scannedIDResult: $scannedIDResult)
                     }
                     
                     Text("Your identification card must match your immunization records scanned on the previous page.")
@@ -57,8 +55,8 @@ struct IDScannerView: View {
                 NavigationLink(
                     isActive: $shouldNavigate,
                     destination: {
-                        if let id = id {
-                            IDSummaryView(id: id)
+                        if let scannedIDResult = scannedIDResult {
+                            IDSummaryView(scannedIDResult: scannedIDResult)
                         }
                     },
                     label: {
