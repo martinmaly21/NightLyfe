@@ -27,12 +27,12 @@ struct LocationCellView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(
-                cornerRadius: 6, style: .continuous
+                cornerRadius: 10, style: .continuous
             )
-                .fill(Color.white)
+                .fill(Color.gray)
             
             RoundedRectangle(
-                cornerRadius: 6, style: .continuous
+                cornerRadius: 10, style: .continuous
             )
                 .strokeBorder(Color.gray, lineWidth: 0.5)
             
@@ -48,14 +48,18 @@ struct LocationCellView: View {
                 Spacer()
                 
                 Text(locationFragment.name)
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                     .font(.title2)
+                    .multilineTextAlignment(.leading)
+                    .padding(.bottom, 4)
             }
             
             VStack(alignment: .trailing) {
                 Text("\(locationFragment.currentcapacity!)" + "/"  + "\(locationFragment.maxcapacity)")
                     .foregroundColor(busyColor)
                     .font(.body)
+                    .multilineTextAlignment(.trailing)
+                    .padding(.top, 4)
                     
                 
                 Spacer()
