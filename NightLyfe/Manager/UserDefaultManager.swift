@@ -8,23 +8,21 @@
 import Foundation
 import Apollo
 
-
 class UserDefaultManager {
-    
-    let encoder = JSONEncoder()
-    let defaults = UserDefaults.standard
+    static let encoder = JSONEncoder()
+    static let defaults = UserDefaults.standard
     
 #warning("In future it's better to retreive this from server every new session")
-    private var currentUserID: GraphQLID {
+    static var currentUserID: GraphQLID? {
         get {
             if let currentUserID = defaults.object(forKey: "currentUserID") as? Data {
                 let decoder = JSONDecoder()
                 if let loadedCurrentUserID = try? decoder.decode(GraphQLID.self, from: currentUserID) {
                     return loadedCurrentUserID
                 }
-                fatalError()
+                return nil
             }
-            fatalError()
+            return nil
         }
         
         set {
@@ -35,12 +33,12 @@ class UserDefaultManager {
         }
     }
     
-    private var passportGivenName: String {
+    static var isFullyVaccinated: Bool {
         get {
-            if let passportGivenName = defaults.object(forKey: "passportGivenName") as? Data {
+            if let isVaccinated = defaults.object(forKey: "isVaccinated") as? Data {
                 let decoder = JSONDecoder()
-                if let loadedPassportGivenName = try? decoder.decode(String.self, from: passportGivenName) {
-                    return loadedPassportGivenName
+                if let loadedFullyVaccinated = try? decoder.decode(Bool.self, from: isVaccinated) {
+                    return loadedFullyVaccinated
                 }
                 fatalError()
             }
@@ -49,7 +47,7 @@ class UserDefaultManager {
         
         set {
             if let encoded = try? encoder.encode(newValue) {
-                defaults.set(encoded, forKey: "passportGivenName")
+                defaults.set(encoded, forKey: "isVaccinated")
             }
         }
     }

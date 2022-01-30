@@ -10,6 +10,7 @@ import SwiftUI
 struct EntryView: View {
     @State private var shouldNavigateToLogIn = false
     @State private var shouldNavigateToSignUp = false
+    @State private var currentUser: UserFragment?
     
     let gradient = LinearGradient(gradient: Gradient(colors: [Color.white, Color.white]), startPoint: .topLeading, endPoint: .bottomTrailing)
     
@@ -37,8 +38,8 @@ struct EntryView: View {
                             .font(.headline)
                     }
                     .background(Capsule()
-                        .stroke(gradient, lineWidth: 2)
-                        .saturation(1.8))
+                                    .stroke(gradient, lineWidth: 2)
+                                    .saturation(1.8))
                     
                     
                     Button(action: {
@@ -51,8 +52,9 @@ struct EntryView: View {
                             .font(.headline)
                     }
                     .background(Capsule()
-                        .stroke(gradient, lineWidth: 2)
-                        .saturation(1.8))
+                                    .stroke(gradient, lineWidth: 2)
+                                    .saturation(1.8))
+                    .disabled(UserDefaultManager.currentUserID == nil)
                 }
                 
                 NavigationLink(
@@ -69,8 +71,16 @@ struct EntryView: View {
                 isPresented: $shouldNavigateToLogIn,
                 content: {
                     MainTabBarView()
+                        .environmentObject(MainAppViewModel(currentUser: currentUser!))
                 }
             )
+            .onAppear {
+                if let userID = UserDefaultManager.currentUserID {
+                    Task {
+                        self.currentUser = try await AccountManager.fetchCurrentUser(id: userID)
+                    }
+                }
+            }
             
         }
         .accentColor(.white)

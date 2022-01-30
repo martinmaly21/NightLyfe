@@ -11,6 +11,8 @@ struct WelcomeToNightLyfeView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var shouldShowLocationView = false
     
+    var currentUser: UserFragment
+    
     var body: some View {
         AppBackground {
             VStack(spacing: 20) {
@@ -54,6 +56,7 @@ struct WelcomeToNightLyfeView: View {
             isPresented: $shouldShowLocationView,
             content: {
                 MainTabBarView()
+                    .environmentObject(MainAppViewModel(currentUser: currentUser))
             }
         )
         .navigationBarBackButtonHidden(true)

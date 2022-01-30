@@ -757,6 +757,119 @@ public final class ProcessPassportMutation: GraphQLMutation {
   }
 }
 
+public final class UsersQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query Users($input: ID!) {
+      users(id: $input) {
+        __typename
+        ...UserFragment
+      }
+    }
+    """
+
+  public let operationName: String = "Users"
+
+  public var queryDocument: String {
+    var document: String = operationDefinition
+    document.append("\n" + UserFragment.fragmentDefinition)
+    document.append("\n" + LocationFragment.fragmentDefinition)
+    return document
+  }
+
+  public var input: GraphQLID
+
+  public init(input: GraphQLID) {
+    self.input = input
+  }
+
+  public var variables: GraphQLMap? {
+    return ["input": input]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("users", arguments: ["id": GraphQLVariable("input")], type: .nonNull(.object(User.selections))),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(users: User) {
+      self.init(unsafeResultMap: ["__typename": "Query", "users": users.resultMap])
+    }
+
+    public var users: User {
+      get {
+        return User(unsafeResultMap: resultMap["users"]! as! ResultMap)
+      }
+      set {
+        resultMap.updateValue(newValue.resultMap, forKey: "users")
+      }
+    }
+
+    public struct User: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["User"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLFragmentSpread(UserFragment.self),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var fragments: Fragments {
+        get {
+          return Fragments(unsafeResultMap: resultMap)
+        }
+        set {
+          resultMap += newValue.resultMap
+        }
+      }
+
+      public struct Fragments {
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public var userFragment: UserFragment {
+          get {
+            return UserFragment(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
+        }
+      }
+    }
+  }
+}
+
 public struct LocationFragment: GraphQLFragment {
   /// The raw GraphQL definition of this fragment.
   public static let fragmentDefinition: String =

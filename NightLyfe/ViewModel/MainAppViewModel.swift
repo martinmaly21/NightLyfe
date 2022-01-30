@@ -8,5 +8,9 @@
 import Foundation
 
 class MainAppViewModel: ObservableObject {
+    @Published var currentUser: UserFragment
     
+    init(currentUser: UserFragment) {
+        self.currentUser = currentUser
+    }
 }

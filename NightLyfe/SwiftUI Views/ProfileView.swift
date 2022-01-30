@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @EnvironmentObject var mainAppViewModel: MainAppViewModel
+    
     var body: some View {
         NavigationView {
             AppBackground {
                 ScrollView {
-                    Text("dklfsk;d")
+                    Text(mainAppViewModel.currentUser.givenname)
                     Text("dklfsk;d")
                     Text("dklfsk;d")
                     Text("dklfsk;d")

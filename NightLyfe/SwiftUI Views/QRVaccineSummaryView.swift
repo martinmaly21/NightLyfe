@@ -13,6 +13,8 @@ struct QRVaccineSummaryView: View {
     @State private var shouldNavigate = false
     @State private var isShowingErrorAlert = false
     
+    @State private var currentUser: UserFragment?
+    
     var passport: PassportFragment
     
     var body: some View {
@@ -147,7 +149,7 @@ struct QRVaccineSummaryView: View {
                     NavigationLink(
                         isActive: $shouldNavigate,
                         destination: {
-                            WelcomeToNightLyfeView()
+                            WelcomeToNightLyfeView(currentUser: currentUser!)
                         },
                         label: {
                             EmptyView()
@@ -172,7 +174,19 @@ struct QRVaccineSummaryView: View {
                 trailing:
                     Button(action: {
                         if onboardingViewModel.isVaccinationInformationCorrect(passportFragment: passport) {
-                            //TODO: Create account!
+                            Task {
+                                do {
+                                    let currentUser = try await CreateAccountManager.addUser(with: onboardingViewModel.scannedID!)
+                                    self.currentUser = currentUser
+                                    
+                                    UserDefaultManager.currentUserID = currentUser.id
+                                    UserDefaultManager.isFullyVaccinated = true
+                                } catch let error {
+                                    //TODO: handle error
+                                    print("Error!!")
+                                }
+                            }
+                            
                             shouldNavigate = true
                         } else {
                             isShowingErrorAlert = true
