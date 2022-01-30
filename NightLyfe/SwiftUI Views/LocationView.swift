@@ -38,9 +38,10 @@ struct LocationView: View {
                     }
                 }
                 .padding()
+                
             }
+            .navigationTitle("qer")
         }
-        .navigationTitle("Locations")
         .onAppear {
             Task {
                 self.isFetching = true
@@ -49,5 +50,5 @@ struct LocationView: View {
             }
         }
     }
-    
+        
 }

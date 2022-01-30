@@ -64,17 +64,14 @@ struct EntryView: View {
                         EmptyView()
                     }
                 )
-                
-                NavigationLink(
-                    isActive: $shouldNavigateToLogIn,
-                    destination: {
-                        LocationView()
-                    },
-                    label: {
-                        EmptyView()
-                    }
-                )
             }
+            .fullScreenCover(
+                isPresented: $shouldNavigateToLogIn,
+                content: {
+                    MainTabBarView()
+                }
+            )
+            
         }
         .accentColor(.white)
     }

@@ -53,7 +53,7 @@ struct WelcomeToNightLyfeView: View {
         .fullScreenCover(
             isPresented: $shouldShowLocationView,
             content: {
-                LocationView()
+                MainTabBarView()
             }
         )
         .navigationBarBackButtonHidden(true)

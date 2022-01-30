@@ -8,13 +8,28 @@ public struct NewLocation: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
   /// - Parameters:
+  ///   - minage
   ///   - name
   ///   - type
   ///   - mustScreen
   ///   - lat
   ///   - long
-  public init(name: String, type: LocationTypes, mustScreen: Bool, lat: Double, long: Double) {
-    graphQLMap = ["name": name, "type": type, "mustScreen": mustScreen, "lat": lat, "long": long]
+  ///   - description
+  ///   - webpage
+  ///   - currentcapacity
+  ///   - maxcapacity
+  ///   - photoUrl
+  public init(minage: Swift.Optional<Int?> = nil, name: String, type: LocationTypes, mustScreen: Bool, lat: Double, long: Double, description: String, webpage: String, currentcapacity: Swift.Optional<Int?> = nil, maxcapacity: Int, photoUrl: String) {
+    graphQLMap = ["minage": minage, "name": name, "type": type, "mustScreen": mustScreen, "lat": lat, "long": long, "description": description, "webpage": webpage, "currentcapacity": currentcapacity, "maxcapacity": maxcapacity, "photoURL": photoUrl]
+  }
+
+  public var minage: Swift.Optional<Int?> {
+    get {
+      return graphQLMap["minage"] as? Swift.Optional<Int?> ?? Swift.Optional<Int?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "minage")
+    }
   }
 
   public var name: String {
@@ -59,6 +74,51 @@ public struct NewLocation: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "long")
+    }
+  }
+
+  public var description: String {
+    get {
+      return graphQLMap["description"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "description")
+    }
+  }
+
+  public var webpage: String {
+    get {
+      return graphQLMap["webpage"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "webpage")
+    }
+  }
+
+  public var currentcapacity: Swift.Optional<Int?> {
+    get {
+      return graphQLMap["currentcapacity"] as? Swift.Optional<Int?> ?? Swift.Optional<Int?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "currentcapacity")
+    }
+  }
+
+  public var maxcapacity: Int {
+    get {
+      return graphQLMap["maxcapacity"] as! Int
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "maxcapacity")
+    }
+  }
+
+  public var photoUrl: String {
+    get {
+      return graphQLMap["photoURL"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "photoURL")
     }
   }
 }
