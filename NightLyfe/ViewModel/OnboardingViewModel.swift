@@ -26,6 +26,7 @@ class OnboardingViewModel: ObservableObject {
             return false
         }
         
+        //TODO: in future, compare birthday as well
         
         return true
     }

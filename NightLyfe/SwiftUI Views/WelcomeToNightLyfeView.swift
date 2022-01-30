@@ -10,7 +10,8 @@ import SwiftUI
 struct WelcomeToNightLyfeView: View {
     var body: some View {
         AppBackground {
-            Text("Welcome to Nightly")
+            Text("Welcome to Nightly!")
+                .foregroundColor(.white)
         }
     }
 }

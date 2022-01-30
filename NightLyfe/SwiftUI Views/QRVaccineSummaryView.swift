@@ -11,6 +11,7 @@ struct QRVaccineSummaryView: View {
     @EnvironmentObject var onboardingViewModel: OnboardingViewModel
     
     @State private var shouldNavigate = false
+    @State private var isShowingErrorAlert = false
     
     var passport: PassportFragment
     
@@ -146,7 +147,7 @@ struct QRVaccineSummaryView: View {
                     NavigationLink(
                         isActive: $shouldNavigate,
                         destination: {
-                            IDScannerView()
+                            WelcomeToNightLyfeView()
                         },
                         label: {
                             EmptyView()
@@ -162,16 +163,22 @@ struct QRVaccineSummaryView: View {
                 
                 Spacer()
             }
+            .alert("Oops. ID does not match vaccine", isPresented: $isShowingErrorAlert) {
+                Button("Try again", role: .cancel) {
+                    NavigationUtil.popToRootView()
+                }
+            }
             .navigationBarItems(
                 trailing:
                     Button(action: {
                         if onboardingViewModel.isVaccinationInformationCorrect(passportFragment: passport) {
+                            //TODO: Create account!
                             shouldNavigate = true
                         } else {
-                            //Show error
+                            isShowingErrorAlert = true
                         }
                     }) {
-                        WelcomeToNightLyfeView()
+                        Text("Next")
                     }
             )
         }
