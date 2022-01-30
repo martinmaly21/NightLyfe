@@ -9,16 +9,16 @@ import SwiftUI
 
 struct BluetoothConnectView: View {
     var body: some View {
-        NavigationView {
             AppBackground {
                 VStack(spacing: 65) {
                     Image(systemName: "appclip")
                         .resizable()
                         .frame(width: 160, height: 160)
                         .foregroundColor(.white)
+                        .offset(x: 0, y: -25)
                     
                     
-                    HStack {
+                    HStack(spacing: 8) {
                         ProgressView()
                             .progressViewStyle(.circular)
                         
@@ -36,7 +36,6 @@ struct BluetoothConnectView: View {
             }
             .navigationTitle("Contactless check-in")
             .navigationBarBackButtonHidden(true)
-        }
     }
 }
 
