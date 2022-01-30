@@ -48,7 +48,7 @@ struct LocationView: View {
                 NavigationLink(
                     isActive: $shouldNavigate,
                     destination: {
-                        BluetoothConnectView()
+                        LocationDetailPage(location: selectedLocation!)
                     },
                     label: {
                         EmptyView()
