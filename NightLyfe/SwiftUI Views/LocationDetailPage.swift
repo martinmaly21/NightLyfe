@@ -32,7 +32,7 @@ struct LocationDetailPage: View {
         AppBackground {
             GeometryReader { reader in
                 ScrollView {
-                    VStack {
+                    VStack(spacing: 30) {
                         AsyncImage(url: URL(string: location.photoUrl))
                             .frame(width: reader.size.width, height:  reader.size.width)
                         

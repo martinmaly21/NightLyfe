@@ -48,7 +48,10 @@ struct LocationView: View {
                 NavigationLink(
                     isActive: $shouldNavigate,
                     destination: {
-                        LocationDetailPage(location: selectedLocation!)
+                        if let selectedLocation = selectedLocation {
+                            LocationDetailPage(location: selectedLocation)
+                        }
+                        
                     },
                     label: {
                         EmptyView()
