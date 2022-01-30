@@ -13,15 +13,15 @@ struct LocationView: View {
     
     let columns = [
         //change minimum to screensize / 3
-        GridItem(.flexible(minimum: 150, maximum: .infinity)),
-        GridItem(.flexible(minimum: 150, maximum: .infinity)),
+        GridItem(.flexible(minimum: 75, maximum: .infinity)),
+        GridItem(.flexible(minimum: 75, maximum: .infinity)),
         //GridItem(.flexible(minimum: 120, maximum: .infinity)),
     ]
     
     var body: some View {
         AppBackground {
             VStack {
-                LazyVGrid(columns: columns) {
+                LazyVGrid(columns: columns, alignment: 7,spacing: 10) {
                     if isFetching {
                         ProgressView()
                             .progressViewStyle(.circular)
