@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainTabBarView: View {
+    @EnvironmentObject var mainAppViewModel: OnboardingViewModel
+    
     var body: some View {
         TabView {
             LocationView()

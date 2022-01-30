@@ -14,6 +14,8 @@
 		50C4E57C27A6436F00F01294 /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C4E57B27A6436F00F01294 /* NavigationUtil.swift */; };
 		50C4E57E27A688F700F01294 /* MainTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C4E57D27A688F700F01294 /* MainTabBarView.swift */; };
 		50C4E58027A689AA00F01294 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C4E57F27A689AA00F01294 /* ProfileView.swift */; };
+		50C4E58227A6A9AE00F01294 /* MainAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C4E58127A6A9AE00F01294 /* MainAppViewModel.swift */; };
+		50C4E58427A6A9E800F01294 /* UserFragment.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 50C4E58327A6A9E800F01294 /* UserFragment.graphql */; };
 		50EC953627A51AAF009D4294 /* NightLyfeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EC953527A51AAF009D4294 /* NightLyfeApp.swift */; };
 		50EC953A27A51AB0009D4294 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50EC953927A51AB0009D4294 /* Assets.xcassets */; };
 		50EC953D27A51AB0009D4294 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50EC953C27A51AB0009D4294 /* Preview Assets.xcassets */; };
@@ -53,6 +55,8 @@
 		50C4E57B27A6436F00F01294 /* NavigationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
 		50C4E57D27A688F700F01294 /* MainTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarView.swift; sourceTree = "<group>"; };
 		50C4E57F27A689AA00F01294 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		50C4E58127A6A9AE00F01294 /* MainAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppViewModel.swift; sourceTree = "<group>"; };
+		50C4E58327A6A9E800F01294 /* UserFragment.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = UserFragment.graphql; sourceTree = "<group>"; };
 		50EC953227A51AAF009D4294 /* NightLyfe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NightLyfe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50EC953527A51AAF009D4294 /* NightLyfeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightLyfeApp.swift; sourceTree = "<group>"; };
 		50EC953927A51AB0009D4294 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				50C4E57827A6393E00F01294 /* OnboardingViewModel.swift */,
+				50C4E58127A6A9AE00F01294 /* MainAppViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 				50F0731D27A5481F00820324 /* LocationFragment.graphql */,
 				50F0732C27A5600600820324 /* ProcessPassport.graphql */,
 				50F0733027A560E800820324 /* PassportFragment.graphql */,
+				50C4E58327A6A9E800F01294 /* UserFragment.graphql */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -315,6 +321,7 @@
 				50F0731C27A544E100820324 /* Locations.graphql in Resources */,
 				D814230527A6532900059603 /* Launch Screen.storyboard in Resources */,
 				50F0733127A560E800820324 /* PassportFragment.graphql in Resources */,
+				50C4E58427A6A9E800F01294 /* UserFragment.graphql in Resources */,
 				50F42D6A27A5392A00E046D7 /* AddLocation.graphql in Resources */,
 				50F0734227A5B87D00820324 /* license.key in Resources */,
 				50EC953D27A51AB0009D4294 /* Preview Assets.xcassets in Resources */,
@@ -431,6 +438,7 @@
 				50F0732F27A5609500820324 /* CreateAccountManager.swift in Sources */,
 				50C4E57927A6393E00F01294 /* OnboardingViewModel.swift in Sources */,
 				50EC953627A51AAF009D4294 /* NightLyfeApp.swift in Sources */,
+				50C4E58227A6A9AE00F01294 /* MainAppViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

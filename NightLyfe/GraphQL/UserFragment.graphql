@@ -1,0 +1,13 @@
+fragment UserFragment on User {
+    id
+    isadmin
+    givenname
+    lastname
+    birthday
+    lastscan
+    scanHistory
+    idImageURL
+    idExpirationDate
+    address
+    lastassessment
+}
