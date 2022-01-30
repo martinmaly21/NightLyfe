@@ -2,8 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string>To scan QR codes.</string>
+	<key>GRAPHQL_ENDPOINT</key>
+	<string>$(GRAPHQL_ENDPOINT)</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -12,11 +12,9 @@
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIColorName</key>
-		<string>launchScreenBackground</string>
+		<string></string>
 		<key>UIImageName</key>
-		<string>NightLyfeLogoWhiteText</string>
+		<string></string>
 	</dict>
-	<key>GRAPHQL_ENDPOINT</key>
-	<string>$(GRAPHQL_ENDPOINT)</string>
 </dict>
 </plist>
