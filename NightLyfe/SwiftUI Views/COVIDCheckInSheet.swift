@@ -16,16 +16,17 @@ struct COVIDCheckInSheet: View {
         NavigationView {
             AppBackground {
                 VStack(spacing: 60) {
-                    Text("By continuing I confirm that I do not have any covid symptoms")
+                    Text("By continuing I confirm that I do not have any covid symptoms.")
                         .font(.title)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                     
-                    Button("Continue") {
+                    Button("       Continue       ") {
                         showingBluetoothConnectionScreen = true
                     }
                     .buttonStyle(GrowingButton())
                 }
+                .offset(x: 0, y: -20)
                 
                 NavigationLink(
                     isActive: $showingBluetoothConnectionScreen,

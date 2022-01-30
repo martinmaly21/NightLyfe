@@ -130,7 +130,7 @@ struct LocationDetailPage: View {
                                 .multilineTextAlignment(.leading)
                         }
                         
-                        Button("Check in now") {
+                        Button("       Check in now       ") {
                             shouldShowScreeningScreen = true
                         }
                         .frame(width: 220, height: 45, alignment: .center)
