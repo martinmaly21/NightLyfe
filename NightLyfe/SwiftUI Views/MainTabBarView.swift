@@ -29,6 +29,7 @@ struct MainTabBarView: View {
             
             .navigationBarBackButtonHidden(true)
         }
+        .tabViewStyle(.automatic)
         .onAppear {
             mainAppViewModel.currentUser = currentUser
         }

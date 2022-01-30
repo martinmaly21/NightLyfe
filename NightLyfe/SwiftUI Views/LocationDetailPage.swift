@@ -28,54 +28,96 @@ struct LocationDetailPage: View {
         )
     }
     
+    private var busyColor: Color {
+        let capacity = Double(location.currentcapacity ?? 0 / location.maxcapacity)
+        
+        switch capacity {
+        case let x where x < 0.35:
+               return .green
+        case let x where x < 0.75:
+               return .yellow
+        default:
+            return .red
+        }
+        
+    }
+    
     var body: some View {
         AppBackground {
             GeometryReader { reader in
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     VStack(spacing: 30) {
                         AsyncImage(url: URL(string: location.photoUrl))
                             .frame(width: reader.size.width, height:  reader.size.width)
                         
-                        HStack(alignment: .bottom) {
-                            Text(location.name + ": ")
-                                .foregroundColor(.white)
-                                .font(.title)
-                            
-                            Text(location.type.rawValue.lowercased().capitalizingFirstLetter())
-                                .foregroundColor(.white)
-                                .font(.title2)
+                        HStack(alignment: .top) {
+                            VStack(spacing: 8) {
+                                HStack {
+                                    Text("Type/style: ")
+                                        .foregroundColor(.white)
+                                        .font(.headline)
+                                        .font(.title)
+                                    
+                                    Text(location.type.rawValue.lowercased().capitalizingFirstLetter())
+                                        .foregroundColor(.white)
+                                        .font(.title2)
+                                    
+                                    Spacer()
+                                }
+                                
+                                HStack {
+                                    Text("Current capacity: ")
+                                        .foregroundColor(.white)
+                                        .font(.headline)
+                                        .multilineTextAlignment(.leading)
+                                    
+                                    Text("\(location.currentcapacity!)" + "/"  + "\(location.maxcapacity)")
+                                        .foregroundColor(busyColor)
+                                        .font(.title3)
+                                    
+                                    Spacer()
+                                }
+                                
+                                if let minage = location.minage {
+                                    HStack {
+                                        Text("Minimum age: ")
+                                            .foregroundColor(.white)
+                                            .font(.headline)
+                                            .multilineTextAlignment(.leading)
+                                        
+                                        Text("\(minage)+")
+                                            .foregroundColor(.white)
+                                            .font(.title3)
+                                        
+                                        Spacer()
+                                    }
+                                }
+                            }
                             
                             Spacer()
-                        }
-                        
-                        HStack(alignment: .bottom) {
-                            Text("Capacity: ")
-                                .foregroundColor(.white)
-                                .font(.title)
                             
-                            Text("\(String(describing: location.currentcapacity))" + "/"  + "\(location.maxcapacity)")
-                                .foregroundColor( (Double(location.currentcapacity ?? 0 / location.maxcapacity) < 0.75) ? Color.green : Color.red)
-                                .font(.title2)
-                            
-                            Spacer()
+                            Map(coordinateRegion: $region)
+                                .frame(width: 100, height: 100)
+                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                         }
                         
                         Text(location.description)
                             .foregroundColor(.white)
                             .font(.body)
+                            .multilineTextAlignment(.leading)
                         
-                        
-                        
-                        Map(coordinateRegion: $region)
-                        
-                        
+               
                         Button("Check in now") {
                             shouldShowScreeningScreen = true
                         }
+                        .frame(width: 220, height: 45, alignment: .center)
                         .buttonStyle(GrowingButton())
-                        
                     }
+                    
+                    Spacer()
+                        .frame(height: 140)
                 }
+                .navigationBarTitle(location.name)
             }
             .sheet(isPresented: $shouldShowScreeningScreen) {
                 COVIDCheckInSheet(location: location)
