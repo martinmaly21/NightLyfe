@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct QRVaccineSummaryView: View {
+    @EnvironmentObject var onboardingViewModel: OnboardingViewModel
+    
     @State private var shouldNavigate = false
     
     var passport: PassportFragment
@@ -163,7 +165,11 @@ struct QRVaccineSummaryView: View {
             .navigationBarItems(
                 trailing:
                     Button(action: {
-                        shouldNavigate = true
+                        if onboardingViewModel.isVaccinationInformationCorrect(passportFragment: passport) {
+                            shouldNavigate = true
+                        } else {
+                            //Show error
+                        }
                     }) {
                         WelcomeToNightLyfeView()
                     }

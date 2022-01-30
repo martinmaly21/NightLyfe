@@ -9,9 +9,10 @@ import SwiftUI
 import Microblink
 
 struct IDScannerView: View {
+    @EnvironmentObject var onboardingViewModel: OnboardingViewModel
+    
     @State private var isShowingScanner = false
     @State private var shouldNavigate = false
-    @State private var scannedIDResult: ScannedID?
     
     var body: some View {
         AppBackground {
@@ -42,7 +43,7 @@ struct IDScannerView: View {
                             .opacity(0.2)
                     )
                     .sheet(isPresented: $isShowingScanner) {
-                        IDScanViewController(shouldNavigate: $shouldNavigate, scannedIDResult: $scannedIDResult)
+                        IDScanViewController(shouldNavigate: $shouldNavigate, scannedIDResult: $onboardingViewModel.scannedID)
                     }
                     
                     Text("Your identification card must match your immunization records scanned on the previous page.")
@@ -55,7 +56,7 @@ struct IDScannerView: View {
                 NavigationLink(
                     isActive: $shouldNavigate,
                     destination: {
-                        if let scannedIDResult = scannedIDResult {
+                        if let scannedIDResult = onboardingViewModel.scannedID {
                             IDSummaryView(scannedIDResult: scannedIDResult)
                         }
                     },
