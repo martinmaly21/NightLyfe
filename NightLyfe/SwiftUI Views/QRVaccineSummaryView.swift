@@ -165,7 +165,7 @@ struct QRVaccineSummaryView: View {
                     Button(action: {
                         shouldNavigate = true
                     }) {
-                        Text("Next")
+                        WelcomeToNightLyfeView()
                     }
             )
         }
