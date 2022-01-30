@@ -26,7 +26,7 @@ struct QRVaccineSummaryView: View {
                                 .bold()
                                 .foregroundColor(.black)
                             
-                            Text(passport.firstname)
+                            Text(passport.givenname)
                                 .font(.title2)
                                 .foregroundColor(.black)
                             

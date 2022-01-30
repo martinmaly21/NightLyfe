@@ -12,7 +12,7 @@ class OnboardingViewModel: ObservableObject {
     
 #warning("Should this be moved to server?")
     func isVaccinationInformationCorrect(passportFragment: PassportFragment) -> Bool {
-        let vaccineFullName = (passportFragment.firstname.uppercased() + passportFragment.lastname.uppercased())
+        let vaccineFullName = (passportFragment.givenname.uppercased() + passportFragment.lastname.uppercased())
             .replacingOccurrences(of: " ", with: "")
             .replacingOccurrences(of: ",", with: "")
             .replacingOccurrences(of: ".", with: "")

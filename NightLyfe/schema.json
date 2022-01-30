@@ -770,7 +770,7 @@
             "deprecationReason": null
           },
           {
-            "name": "firstname",
+            "name": "givenname",
             "description": "",
             "args": [],
             "type": {

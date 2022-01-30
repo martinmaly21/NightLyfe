@@ -19,22 +19,26 @@ struct LocationView: View {
     ]
     
     var body: some View {
-        AppBackground {
-            VStack {
-                LazyVGrid(columns: columns) {
-                    if isFetching {
-                        ProgressView()
-                            .progressViewStyle(.circular)
-                    } else {
-                        ForEach(0..<locations.count, id: \.self) { index in
-                            LocationCellView(locationFagment: locations[index])
+        NavigationView {
+            AppBackground {
+                ScrollView {
+                    VStack {
+                        LazyVGrid(columns: columns) {
+                            if isFetching {
+                                ProgressView()
+                                    .progressViewStyle(.circular)
+                            } else {
+                                ForEach(0..<locations.count, id: \.self) { index in
+                                    LocationCellView(locationFagment: locations[index])
+                                }
+                            }
                         }
+                        
+                        Spacer()
                     }
                 }
-                
-                Spacer()
+                .padding()
             }
-            .padding()
         }
         .navigationTitle("Locations")
         .onAppear {

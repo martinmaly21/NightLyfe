@@ -463,8 +463,8 @@ public final class ProcessPassportMutation: GraphQLMutation {
         self.resultMap = unsafeResultMap
       }
 
-      public init(firstname: String, lastname: String, dateofbirth: String, firstDate: String, firstBrand: String, secondDate: String, secondBrand: String, boosterDate: String, boosterBrand: String) {
-        self.init(unsafeResultMap: ["__typename": "Passport", "firstname": firstname, "lastname": lastname, "dateofbirth": dateofbirth, "first_date": firstDate, "first_brand": firstBrand, "second_date": secondDate, "second_brand": secondBrand, "booster_date": boosterDate, "booster_brand": boosterBrand])
+      public init(givenname: String, lastname: String, dateofbirth: String, firstDate: String, firstBrand: String, secondDate: String, secondBrand: String, boosterDate: String, boosterBrand: String) {
+        self.init(unsafeResultMap: ["__typename": "Passport", "givenname": givenname, "lastname": lastname, "dateofbirth": dateofbirth, "first_date": firstDate, "first_brand": firstBrand, "second_date": secondDate, "second_brand": secondBrand, "booster_date": boosterDate, "booster_brand": boosterBrand])
       }
 
       public var __typename: String {
@@ -559,7 +559,7 @@ public struct PassportFragment: GraphQLFragment {
     """
     fragment PassportFragment on Passport {
       __typename
-      firstname
+      givenname
       lastname
       dateofbirth
       first_date
@@ -576,7 +576,7 @@ public struct PassportFragment: GraphQLFragment {
   public static var selections: [GraphQLSelection] {
     return [
       GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-      GraphQLField("firstname", type: .nonNull(.scalar(String.self))),
+      GraphQLField("givenname", type: .nonNull(.scalar(String.self))),
       GraphQLField("lastname", type: .nonNull(.scalar(String.self))),
       GraphQLField("dateofbirth", type: .nonNull(.scalar(String.self))),
       GraphQLField("first_date", type: .nonNull(.scalar(String.self))),
@@ -594,8 +594,8 @@ public struct PassportFragment: GraphQLFragment {
     self.resultMap = unsafeResultMap
   }
 
-  public init(firstname: String, lastname: String, dateofbirth: String, firstDate: String, firstBrand: String, secondDate: String, secondBrand: String, boosterDate: String, boosterBrand: String) {
-    self.init(unsafeResultMap: ["__typename": "Passport", "firstname": firstname, "lastname": lastname, "dateofbirth": dateofbirth, "first_date": firstDate, "first_brand": firstBrand, "second_date": secondDate, "second_brand": secondBrand, "booster_date": boosterDate, "booster_brand": boosterBrand])
+  public init(givenname: String, lastname: String, dateofbirth: String, firstDate: String, firstBrand: String, secondDate: String, secondBrand: String, boosterDate: String, boosterBrand: String) {
+    self.init(unsafeResultMap: ["__typename": "Passport", "givenname": givenname, "lastname": lastname, "dateofbirth": dateofbirth, "first_date": firstDate, "first_brand": firstBrand, "second_date": secondDate, "second_brand": secondBrand, "booster_date": boosterDate, "booster_brand": boosterBrand])
   }
 
   public var __typename: String {
@@ -607,12 +607,12 @@ public struct PassportFragment: GraphQLFragment {
     }
   }
 
-  public var firstname: String {
+  public var givenname: String {
     get {
-      return resultMap["firstname"]! as! String
+      return resultMap["givenname"]! as! String
     }
     set {
-      resultMap.updateValue(newValue, forKey: "firstname")
+      resultMap.updateValue(newValue, forKey: "givenname")
     }
   }
 
