@@ -13,9 +13,9 @@ struct LocationView: View {
     
     let columns = [
         //change minimum to screensize / 3
-        GridItem(.flexible(minimum: 120, maximum: .infinity)),
-        GridItem(.flexible(minimum: 120, maximum: .infinity)),
-        GridItem(.flexible(minimum: 120, maximum: .infinity)),
+        GridItem(.flexible(minimum: 150, maximum: .infinity)),
+        GridItem(.flexible(minimum: 150, maximum: .infinity)),
+        //GridItem(.flexible(minimum: 120, maximum: .infinity)),
     ]
     
     var body: some View {

@@ -17,6 +17,7 @@ struct LocationCellView: View {
             
             Text(locationFagment.name)
         }
-        .aspectRatio(1, contentMode: .fill)
+        //.aspectRatio(1, contentMode: .fill)
+        .frame (width: 150, height: 220)
     }
 }
