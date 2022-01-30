@@ -15,6 +15,9 @@ struct WelcomeToNightLyfeView: View {
         AppBackground {
             VStack(spacing: 20) {
                 VStack(spacing: 10) {
+                    Spacer()
+                        .frame(height: 60)
+                    
                     Text("Welcome to NightLyfe!")
                         .font(.title)
                         .foregroundColor(.white)
@@ -29,15 +32,22 @@ struct WelcomeToNightLyfeView: View {
                 EmptyView()
                     .frame(height: 150)
                 
-                Button(
-                    action: {
-                        shouldShowLocationView = true
-                    },
-                    label: {
-                        Text("Begin")
-                            .font(.title)
-                    }
-                )
+                Spacer()
+                
+                Button(action: {
+                    shouldShowLocationView = true
+                }) {
+                    Text("Let's go")
+                        .foregroundColor(.black)
+                        .font(.title)
+                        .padding()
+                }
+                .frame(width: 180)
+                .background(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                
+                
+                Spacer()
+                    .frame(height: 240)
             }
         }
         .fullScreenCover(
