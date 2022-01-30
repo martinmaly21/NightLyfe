@@ -14,10 +14,9 @@ struct ProfileView: View {
         NavigationView {
             AppBackground {
                 ScrollView {
-                    Text(mainAppViewModel.currentUser?.givenname ?? "")
-                    Text("dklfsk;d")
-                    Text("dklfsk;d")
-                    Text("dklfsk;d")
+                    Text("Name: " + (mainAppViewModel.currentUser?.givenname ?? ""))
+                        .foregroundColor(.white)
+                        .font(.title)
                 }
 //                .padding()
             }

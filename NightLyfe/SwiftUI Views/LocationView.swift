@@ -10,6 +10,8 @@ import SwiftUI
 struct LocationView: View {
     @State var isFetching = false
     @State var locations: [LocationFragment] = []
+    @State private var selectedLocation: LocationFragment?
+    @State private var shouldNavigate = false
     
     let columns = [
         //change minimum to screensize / 3
@@ -30,6 +32,10 @@ struct LocationView: View {
                             } else {
                                 ForEach(0..<locations.count, id: \.self) { index in
                                     LocationCellView(locationFagment: locations[index])
+                                        .onTapGesture {
+                                            selectedLocation = locations[index]
+                                            shouldNavigate = true
+                                        }
                                 }
                             }
                         }
@@ -39,6 +45,15 @@ struct LocationView: View {
                 }
                 .padding()
                 
+                NavigationLink(
+                    isActive: $shouldNavigate,
+                    destination: {
+                        BluetoothConnectView()
+                    },
+                    label: {
+                        EmptyView()
+                    }
+                )
             }
             .navigationTitle("Home")
         }
