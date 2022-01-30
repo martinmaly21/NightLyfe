@@ -1,3 +1,14 @@
 fragment LocationFragment on Location {
+    id
+    minage
     name
+    type
+    mustScreen
+    lat
+    long
+    description
+    webpage
+    currentcapacity
+    maxcapacity
+    photoURL
 }

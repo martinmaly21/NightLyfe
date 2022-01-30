@@ -40,7 +40,7 @@ struct LocationView: View {
                 .padding()
                 
             }
-            .navigationTitle("qer")
+            .navigationTitle("Home")
         }
         .onAppear {
             Task {

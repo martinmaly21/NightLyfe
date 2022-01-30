@@ -599,8 +599,8 @@ public final class LocationsQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(name: String) {
-        self.init(unsafeResultMap: ["__typename": "Location", "name": name])
+      public init(id: GraphQLID, minage: Int? = nil, name: String, type: LocationTypes, mustScreen: Bool, lat: Double, long: Double, description: String, webpage: String, currentcapacity: Int? = nil, maxcapacity: Int, photoUrl: String) {
+        self.init(unsafeResultMap: ["__typename": "Location", "id": id, "minage": minage, "name": name, "type": type, "mustScreen": mustScreen, "lat": lat, "long": long, "description": description, "webpage": webpage, "currentcapacity": currentcapacity, "maxcapacity": maxcapacity, "photoURL": photoUrl])
       }
 
       public var __typename: String {
@@ -876,7 +876,18 @@ public struct LocationFragment: GraphQLFragment {
     """
     fragment LocationFragment on Location {
       __typename
+      id
+      minage
       name
+      type
+      mustScreen
+      lat
+      long
+      description
+      webpage
+      currentcapacity
+      maxcapacity
+      photoURL
     }
     """
 
@@ -885,7 +896,18 @@ public struct LocationFragment: GraphQLFragment {
   public static var selections: [GraphQLSelection] {
     return [
       GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+      GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+      GraphQLField("minage", type: .scalar(Int.self)),
       GraphQLField("name", type: .nonNull(.scalar(String.self))),
+      GraphQLField("type", type: .nonNull(.scalar(LocationTypes.self))),
+      GraphQLField("mustScreen", type: .nonNull(.scalar(Bool.self))),
+      GraphQLField("lat", type: .nonNull(.scalar(Double.self))),
+      GraphQLField("long", type: .nonNull(.scalar(Double.self))),
+      GraphQLField("description", type: .nonNull(.scalar(String.self))),
+      GraphQLField("webpage", type: .nonNull(.scalar(String.self))),
+      GraphQLField("currentcapacity", type: .scalar(Int.self)),
+      GraphQLField("maxcapacity", type: .nonNull(.scalar(Int.self))),
+      GraphQLField("photoURL", type: .nonNull(.scalar(String.self))),
     ]
   }
 
@@ -895,8 +917,8 @@ public struct LocationFragment: GraphQLFragment {
     self.resultMap = unsafeResultMap
   }
 
-  public init(name: String) {
-    self.init(unsafeResultMap: ["__typename": "Location", "name": name])
+  public init(id: GraphQLID, minage: Int? = nil, name: String, type: LocationTypes, mustScreen: Bool, lat: Double, long: Double, description: String, webpage: String, currentcapacity: Int? = nil, maxcapacity: Int, photoUrl: String) {
+    self.init(unsafeResultMap: ["__typename": "Location", "id": id, "minage": minage, "name": name, "type": type, "mustScreen": mustScreen, "lat": lat, "long": long, "description": description, "webpage": webpage, "currentcapacity": currentcapacity, "maxcapacity": maxcapacity, "photoURL": photoUrl])
   }
 
   public var __typename: String {
@@ -908,12 +930,111 @@ public struct LocationFragment: GraphQLFragment {
     }
   }
 
+  public var id: GraphQLID {
+    get {
+      return resultMap["id"]! as! GraphQLID
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "id")
+    }
+  }
+
+  public var minage: Int? {
+    get {
+      return resultMap["minage"] as? Int
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "minage")
+    }
+  }
+
   public var name: String {
     get {
       return resultMap["name"]! as! String
     }
     set {
       resultMap.updateValue(newValue, forKey: "name")
+    }
+  }
+
+  public var type: LocationTypes {
+    get {
+      return resultMap["type"]! as! LocationTypes
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "type")
+    }
+  }
+
+  public var mustScreen: Bool {
+    get {
+      return resultMap["mustScreen"]! as! Bool
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "mustScreen")
+    }
+  }
+
+  public var lat: Double {
+    get {
+      return resultMap["lat"]! as! Double
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "lat")
+    }
+  }
+
+  public var long: Double {
+    get {
+      return resultMap["long"]! as! Double
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "long")
+    }
+  }
+
+  public var description: String {
+    get {
+      return resultMap["description"]! as! String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "description")
+    }
+  }
+
+  public var webpage: String {
+    get {
+      return resultMap["webpage"]! as! String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "webpage")
+    }
+  }
+
+  public var currentcapacity: Int? {
+    get {
+      return resultMap["currentcapacity"] as? Int
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "currentcapacity")
+    }
+  }
+
+  public var maxcapacity: Int {
+    get {
+      return resultMap["maxcapacity"]! as! Int
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "maxcapacity")
+    }
+  }
+
+  public var photoUrl: String {
+    get {
+      return resultMap["photoURL"]! as! String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "photoURL")
     }
   }
 }
@@ -1230,8 +1351,8 @@ public struct UserFragment: GraphQLFragment {
       self.resultMap = unsafeResultMap
     }
 
-    public init(name: String) {
-      self.init(unsafeResultMap: ["__typename": "Location", "name": name])
+    public init(id: GraphQLID, minage: Int? = nil, name: String, type: LocationTypes, mustScreen: Bool, lat: Double, long: Double, description: String, webpage: String, currentcapacity: Int? = nil, maxcapacity: Int, photoUrl: String) {
+      self.init(unsafeResultMap: ["__typename": "Location", "id": id, "minage": minage, "name": name, "type": type, "mustScreen": mustScreen, "lat": lat, "long": long, "description": description, "webpage": webpage, "currentcapacity": currentcapacity, "maxcapacity": maxcapacity, "photoURL": photoUrl])
     }
 
     public var __typename: String {
