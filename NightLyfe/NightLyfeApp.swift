@@ -32,6 +32,7 @@ struct NightLyfeApp: App {
     var body: some Scene {
         WindowGroup {
             EntryView()
+                .environmentObject(OnboardingViewModel())
         }
     }
 }
