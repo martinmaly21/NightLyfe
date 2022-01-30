@@ -55,12 +55,18 @@ struct LocationCellView: View {
             }
             
             VStack(alignment: .trailing) {
-                Text("\(locationFragment.currentcapacity!)" + "/"  + "\(locationFragment.maxcapacity)")
-                    .foregroundColor(busyColor)
-                    .font(.body)
-                    .multilineTextAlignment(.trailing)
-                    .padding(.top, 4)
-                    
+                ZStack {
+                    Text("\(locationFragment.currentcapacity!)" + "/"  + "\(locationFragment.maxcapacity)")
+                        .foregroundColor(busyColor)
+                        .font(.body)
+                        .multilineTextAlignment(.trailing)
+                        .padding(.top, 4)
+                        
+                }
+                .padding()
+                .cornerRadius(4)
+                .background(Color.white)
+                
                 
                 Spacer()
             }
