@@ -29,6 +29,8 @@ struct IDSummaryView: View {
                         .frame(width: 120, height: 120)
                         .shadow(radius: 10)
                     
+                    Spacer()
+                        .frame(height: 5)
                     
                     VStack {
                         Spacer()
@@ -39,58 +41,60 @@ struct IDSummaryView: View {
                             .foregroundColor(.black)
                         
                         Spacer()
-                            .frame(height: 10)
+                            .frame(height: 35)
                         
-                        HStack {
-                            Text("Age:")
-                                .font(.title2)
-                                .foregroundColor(.black)
-                                .bold()
+                        VStack(spacing: 10) {
+                            HStack {
+                                Text("Age:")
+                                    .font(.title2)
+                                    .foregroundColor(.black)
+                                    .bold()
+                                
+                                Text("\(scannedIDResult.age)")
+                                    .font(.title2)
+                                    .foregroundColor(.black)
+                                
+                                Spacer()
+                            }
                             
-                            Text("\(scannedIDResult.age)")
-                                .font(.title2)
-                                .foregroundColor(.black)
+                            HStack(alignment: .top) {
+                                Text("Address:")
+                                    .font(.title2)
+                                    .foregroundColor(.black)
+                                    .bold()
+                                
+                                Text("\(scannedIDResult.address)")
+                                    .font(.title2)
+                                    .foregroundColor(.black)
+                                
+                                Spacer()
+                            }
                             
-                            Spacer()
-                        }
-                        
-                        HStack {
-                            Text("Address:")
-                                .font(.title2)
-                                .foregroundColor(.black)
-                                .bold()
+                            HStack {
+                                Text("Date of birth:")
+                                    .font(.title2)
+                                    .foregroundColor(.black)
+                                    .bold()
+                                
+                                Text("\(dateFormatter.string(from: scannedIDResult.birthday))")
+                                    .font(.title2)
+                                    .foregroundColor(.black)
+                                
+                                Spacer()
+                            }
                             
-                            Text("\(scannedIDResult.address)")
-                                .font(.title2)
-                                .foregroundColor(.black)
-                            
-                            Spacer()
-                        }
-                        
-                        HStack {
-                            Text("Date of birth:")
-                                .font(.title2)
-                                .foregroundColor(.black)
-                                .bold()
-                            
-                            Text("\(dateFormatter.string(from: scannedIDResult.birthday))")
-                                .font(.title2)
-                                .foregroundColor(.black)
-                            
-                            Spacer()
-                        }
-                        
-                        HStack {
-                            Text("License expires:")
-                                .font(.title2)
-                                .foregroundColor(.black)
-                                .bold()
-                            
-                            Text("\(dateFormatter.string(from: scannedIDResult.expirationDate))")
-                                .font(.title2)
-                                .foregroundColor(.black)
-                            
-                            Spacer()
+                            HStack {
+                                Text("License expires:")
+                                    .font(.title2)
+                                    .foregroundColor(.black)
+                                    .bold()
+                                
+                                Text("\(dateFormatter.string(from: scannedIDResult.expirationDate))")
+                                    .font(.title2)
+                                    .foregroundColor(.black)
+                                
+                                Spacer()
+                            }
                         }
                     }
                 }
@@ -104,6 +108,6 @@ struct IDSummaryView: View {
                 Spacer()
             }
         }
-        .navigationTitle("Account Summary")
+        .navigationTitle("Identity Verification")
     }
 }
