@@ -70,14 +70,17 @@ struct EntryView: View {
             .fullScreenCover(
                 isPresented: $shouldNavigateToLogIn,
                 content: {
-                    MainTabBarView()
-                        .environmentObject(MainAppViewModel(currentUser: currentUser!))
+                    if let currentUser = UserDefaultManager.currentUser {
+                        MainTabBarView(currentUser: currentUser)
+                            .environmentObject(MainAppViewModel())
+                    }
+                    
                 }
             )
             .onAppear {
                 if let userID = UserDefaultManager.currentUserID {
                     Task {
-                        self.currentUser = try await AccountManager.fetchCurrentUser(id: userID)
+                        UserDefaultManager.currentUser = try await AccountManager.fetchCurrentUser(id: userID)
                     }
                 }
             }

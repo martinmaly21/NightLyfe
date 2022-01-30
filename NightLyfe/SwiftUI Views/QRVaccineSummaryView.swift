@@ -149,7 +149,10 @@ struct QRVaccineSummaryView: View {
                     NavigationLink(
                         isActive: $shouldNavigate,
                         destination: {
-                            WelcomeToNightLyfeView(currentUser: currentUser!)
+                            if let currentUser = currentUser {
+                                WelcomeToNightLyfeView(currentUser: currentUser)
+                            }
+                            
                         },
                         label: {
                             EmptyView()

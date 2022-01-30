@@ -10,8 +10,6 @@ import Apollo
 
 
 class AccountManager {
-    
-    
     static func fetchCurrentUser(id: GraphQLID) async throws -> UserFragment {
         let query = UsersQuery(input: id)
        

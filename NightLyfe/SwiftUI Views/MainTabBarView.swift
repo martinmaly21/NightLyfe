@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainTabBarView: View {
     @EnvironmentObject var mainAppViewModel: MainAppViewModel
+    var currentUser: UserFragment?
     
     var body: some View {
         TabView {
@@ -27,6 +28,9 @@ struct MainTabBarView: View {
                 }
             
             .navigationBarBackButtonHidden(true)
+        }
+        .onAppear {
+            mainAppViewModel.currentUser = currentUser
         }
     }
 }

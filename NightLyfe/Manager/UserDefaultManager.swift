@@ -12,6 +12,8 @@ class UserDefaultManager {
     static let encoder = JSONEncoder()
     static let defaults = UserDefaults.standard
     
+    static var currentUser: UserFragment?
+    
 #warning("In future it's better to retreive this from server every new session")
     static var currentUserID: GraphQLID? {
         get {

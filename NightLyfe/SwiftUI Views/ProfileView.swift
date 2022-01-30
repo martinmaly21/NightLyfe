@@ -14,7 +14,7 @@ struct ProfileView: View {
         NavigationView {
             AppBackground {
                 ScrollView {
-                    Text(mainAppViewModel.currentUser.givenname)
+                    Text(mainAppViewModel.currentUser?.givenname ?? "")
                     Text("dklfsk;d")
                     Text("dklfsk;d")
                     Text("dklfsk;d")
