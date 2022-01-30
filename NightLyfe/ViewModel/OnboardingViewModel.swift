@@ -12,22 +12,6 @@ class OnboardingViewModel: ObservableObject {
     
 #warning("Should this be moved to server?")
     func isVaccinationInformationCorrect(passportFragment: PassportFragment) -> Bool {
-        let vaccineFullName = (passportFragment.givenname.uppercased() + passportFragment.lastname.uppercased())
-            .replacingOccurrences(of: " ", with: "")
-            .replacingOccurrences(of: ",", with: "")
-            .replacingOccurrences(of: ".", with: "")
-        
-        let idFullName = ((scannedID?.firstName.uppercased() ?? "") + (scannedID?.lastName.uppercased() ?? ""))
-            .replacingOccurrences(of: " ", with: "")
-            .replacingOccurrences(of: ",", with: "")
-            .replacingOccurrences(of: ".", with: "")
-        
-        guard vaccineFullName == idFullName else {
-            return false
-        }
-        
-        //TODO: in future, compare birthday as well
-        
-        return true
+        return IdentityManager.isVaccinationInformationCorrect(passportFragment: passportFragment, scannedID: scannedID)
     }
 }

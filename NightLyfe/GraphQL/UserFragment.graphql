@@ -4,8 +4,12 @@ fragment UserFragment on User {
     givenname
     lastname
     birthday
-    lastscan
-    scanHistory
+    lastScan
+    
+    scanHistory {
+        ...LocationFragment
+    }
+    
     idImageURL
     idExpirationDate
     address

@@ -1,0 +1,5 @@
+mutation AddUser($input: NewUser!) {
+    addUser(input: $input) {
+        ...UserFragment
+    }
+}
