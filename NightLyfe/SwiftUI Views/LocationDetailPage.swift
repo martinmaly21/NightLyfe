@@ -33,9 +33,9 @@ struct LocationDetailPage: View {
         
         switch capacity {
         case let x where x < 0.35:
-               return .green
+            return .green
         case let x where x < 0.75:
-               return .yellow
+            return .yellow
         default:
             return .red
         }
@@ -60,7 +60,7 @@ struct LocationDetailPage: View {
                                     
                                     Text(location.type.rawValue.lowercased().capitalizingFirstLetter())
                                         .foregroundColor(.white)
-                                        .font(.title2)
+                                        .font(.title3)
                                     
                                     Spacer()
                                 }
@@ -92,6 +92,19 @@ struct LocationDetailPage: View {
                                         Spacer()
                                     }
                                 }
+                                
+                                HStack {
+                                    Text("Vaccine required? ")
+                                        .foregroundColor(.white)
+                                        .font(.headline)
+                                        .multilineTextAlignment(.leading)
+                                    
+                                    Image(systemName: location.mustScreen ? "checkmark.circle" : "x.circle")
+                                        .foregroundColor(location.mustScreen ? .green : .red)
+                                        .font(.title3)
+                                    
+                                    Spacer()
+                                }
                             }
                             
                             Spacer()
@@ -101,12 +114,22 @@ struct LocationDetailPage: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                         }
                         
-                        Text(location.description)
-                            .foregroundColor(.white)
-                            .font(.body)
-                            .multilineTextAlignment(.leading)
+                        VStack(alignment: .leading, spacing: 6) {
+                            HStack {
+                                Text("Description:")
+                                    .foregroundColor(.white)
+                                    .font(.title)
+                                    .multilineTextAlignment(.leading)
+                                
+                                Spacer()
+                            }
+                            
+                            Text(location.description)
+                                .foregroundColor(.white)
+                                .font(.body)
+                                .multilineTextAlignment(.leading)
+                        }
                         
-               
                         Button("Check in now") {
                             shouldShowScreeningScreen = true
                         }

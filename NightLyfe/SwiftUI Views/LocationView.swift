@@ -23,7 +23,7 @@ struct LocationView: View {
     var body: some View {
         NavigationView {
             AppBackground {
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     VStack {
                         LazyVGrid(columns: columns) {
                             if isFetching {
@@ -31,7 +31,7 @@ struct LocationView: View {
                                     .progressViewStyle(.circular)
                             } else {
                                 ForEach(0..<locations.count, id: \.self) { index in
-                                    LocationCellView(locationFagment: locations[index])
+                                    LocationCellView(locationFragment: locations[index])
                                         .onTapGesture {
                                             selectedLocation = locations[index]
                                             shouldNavigate = true
@@ -42,8 +42,10 @@ struct LocationView: View {
                         
                         Spacer()
                     }
+                    
+                    Spacer()
+                        .frame(height: 80)
                 }
-                .padding()
                 
                 NavigationLink(
                     isActive: $shouldNavigate,
