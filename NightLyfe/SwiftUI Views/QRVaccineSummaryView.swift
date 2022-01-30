@@ -118,12 +118,12 @@ struct QRVaccineSummaryView: View {
                     
                     VStack(spacing: 5) {
                         HStack(alignment: .bottom) {
-                            Text("First vaccine date:")
+                            Text("Booster vaccine date:")
                                 .font(.title2)
                                 .bold()
                                 .foregroundColor(.black)
                             
-                            Text(passport.boosterDate)
+                            Text(passport.boosterDate.isEmpty ? "N/A" : passport.boosterDate)
                                 .font(.title2)
                                 .foregroundColor(.black)
                             
@@ -131,12 +131,12 @@ struct QRVaccineSummaryView: View {
                         }
                         
                         HStack(alignment: .bottom) {
-                            Text("First vaccine brand:")
+                            Text("Booster vaccine brand:")
                                 .font(.title2)
                                 .bold()
                                 .foregroundColor(.black)
                             
-                            Text(passport.boosterBrand)
+                            Text(passport.boosterBrand.isEmpty ? "N/A" : passport.boosterBrand)
                                 .font(.title2)
                                 .foregroundColor(.black)
                             

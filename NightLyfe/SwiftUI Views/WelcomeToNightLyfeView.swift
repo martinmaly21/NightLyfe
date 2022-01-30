@@ -13,17 +13,32 @@ struct WelcomeToNightLyfeView: View {
     
     var body: some View {
         AppBackground {
-            Text("Welcome to NightLyfe!")
-                .foregroundColor(.white)
-            
-            Button(
-                action: {
-                    shouldShowLocationView = true
-                },
-                label: {
-                    Text("Begin")
+            VStack(spacing: 20) {
+                VStack(spacing: 10) {
+                    Text("Welcome to NightLyfe!")
+                        .font(.title)
+                        .foregroundColor(.white)
+                    
+                    Text("NightLyfe is the new hottest way to stay safe and have fun during a night on the town")
+                        .font(.subheadline)
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
                 }
-            )
+                .padding([.leading, .trailing], 16.5)
+                
+                EmptyView()
+                    .frame(height: 150)
+                
+                Button(
+                    action: {
+                        shouldShowLocationView = true
+                    },
+                    label: {
+                        Text("Begin")
+                            .font(.title)
+                    }
+                )
+            }
         }
         .fullScreenCover(
             isPresented: $shouldShowLocationView,
