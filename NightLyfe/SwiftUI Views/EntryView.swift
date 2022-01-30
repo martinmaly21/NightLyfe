@@ -32,7 +32,7 @@ struct EntryView: View {
                     }
                     ) {
                         Text("Sign up")
-                            .frame(width: 200, height: 35)
+                            .frame(width: 215, height: 44)
                             .foregroundColor(.white)
                             .font(.headline)
                     }
@@ -46,7 +46,7 @@ struct EntryView: View {
                         
                     }) {
                         Text("Log in")
-                            .frame(width: 200, height: 35)
+                            .frame(width: 215, height: 44)
                             .foregroundColor(.white)
                             .font(.headline)
                     }

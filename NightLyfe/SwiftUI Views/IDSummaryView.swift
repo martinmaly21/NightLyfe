@@ -97,6 +97,16 @@ struct IDSummaryView: View {
                             }
                         }
                     }
+                    
+                    NavigationLink(
+                        isActive: $shouldNavigate,
+                        destination: {
+                            QRVaccineScannerView()
+                        },
+                        label: {
+                            EmptyView()
+                        }
+                    )
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
@@ -107,6 +117,14 @@ struct IDSummaryView: View {
                 
                 Spacer()
             }
+            .navigationBarItems(
+                trailing:
+                    Button(action: {
+                        shouldNavigate = true
+                    }) {
+                        Text("Next")
+                    }
+            )
         }
         .navigationTitle("Identity Verification")
     }

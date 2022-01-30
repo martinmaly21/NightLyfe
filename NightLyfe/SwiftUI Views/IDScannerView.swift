@@ -25,7 +25,7 @@ struct IDScannerView: View {
                         .resizable()
                         .renderingMode(.template)
                         .foregroundColor(.white)
-                        .frame(width: 200, height: 160)
+                        .frame(width: 250, height: 160)
                         .offset(x: 0, y: -40)
                     
                     Button(action: {
