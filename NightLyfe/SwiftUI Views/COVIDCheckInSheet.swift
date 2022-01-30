@@ -38,7 +38,7 @@ struct COVIDCheckInSheet: View {
                     }
                 )
             }
-            .navigationBarTitle("Check in: \(location.name)")
+            .navigationBarTitle("Check in (\(location.name))")
         }
     }
 }
