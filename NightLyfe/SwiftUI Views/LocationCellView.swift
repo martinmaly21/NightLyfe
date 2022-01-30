@@ -60,13 +60,12 @@ struct LocationCellView: View {
                         .foregroundColor(busyColor)
                         .font(.body)
                         .multilineTextAlignment(.trailing)
-                        .padding(.top, 4)
+                        .padding(.top, 6)
                         
                 }
-                .padding()
-                .cornerRadius(4)
+                .padding(.all, 3)
                 .background(Color.white)
-                
+                .cornerRadius(4)
                 
                 Spacer()
             }
