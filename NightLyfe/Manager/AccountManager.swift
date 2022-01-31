@@ -29,7 +29,7 @@ class AccountManager {
                             
                             continuation.resume(returning: userFragment)
                         } else {
-                            fatalError()
+                            //fatalError()
                         }
                     }
                 }

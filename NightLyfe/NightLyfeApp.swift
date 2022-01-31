@@ -33,6 +33,10 @@ struct NightLyfeApp: App {
         WindowGroup {
             EntryView()
                 .environmentObject(OnboardingViewModel())
+                .onAppear {
+                    CreateLocationManager.createLocation()
+                }
         }
+        
     }
 }

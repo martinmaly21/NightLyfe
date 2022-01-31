@@ -333,12 +333,18 @@ public final class AddLocationMutation: GraphQLMutation {
     mutation AddLocation($input: NewLocation!) {
       addLocation(input: $input) {
         __typename
-        mustScreen
+        ...LocationFragment
       }
     }
     """
 
   public let operationName: String = "AddLocation"
+
+  public var queryDocument: String {
+    var document: String = operationDefinition
+    document.append("\n" + LocationFragment.fragmentDefinition)
+    return document
+  }
 
   public var input: NewLocation
 
@@ -384,7 +390,7 @@ public final class AddLocationMutation: GraphQLMutation {
       public static var selections: [GraphQLSelection] {
         return [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("mustScreen", type: .nonNull(.scalar(Bool.self))),
+          GraphQLFragmentSpread(LocationFragment.self),
         ]
       }
 
@@ -394,8 +400,8 @@ public final class AddLocationMutation: GraphQLMutation {
         self.resultMap = unsafeResultMap
       }
 
-      public init(mustScreen: Bool) {
-        self.init(unsafeResultMap: ["__typename": "Location", "mustScreen": mustScreen])
+      public init(id: GraphQLID, minage: Int? = nil, name: String, type: LocationTypes, mustScreen: Bool, lat: Double, long: Double, description: String, webpage: String, currentcapacity: Int? = nil, maxcapacity: Int, photoUrl: String) {
+        self.init(unsafeResultMap: ["__typename": "Location", "id": id, "minage": minage, "name": name, "type": type, "mustScreen": mustScreen, "lat": lat, "long": long, "description": description, "webpage": webpage, "currentcapacity": currentcapacity, "maxcapacity": maxcapacity, "photoURL": photoUrl])
       }
 
       public var __typename: String {
@@ -407,12 +413,29 @@ public final class AddLocationMutation: GraphQLMutation {
         }
       }
 
-      public var mustScreen: Bool {
+      public var fragments: Fragments {
         get {
-          return resultMap["mustScreen"]! as! Bool
+          return Fragments(unsafeResultMap: resultMap)
         }
         set {
-          resultMap.updateValue(newValue, forKey: "mustScreen")
+          resultMap += newValue.resultMap
+        }
+      }
+
+      public struct Fragments {
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public var locationFragment: LocationFragment {
+          get {
+            return LocationFragment(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
         }
       }
     }

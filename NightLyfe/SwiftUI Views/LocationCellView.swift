@@ -36,13 +36,33 @@ struct LocationCellView: View {
             )
                 .strokeBorder(Color.gray, lineWidth: 0.5)
             
-            AsyncImage(url: URL(string: locationFragment.photoUrl))
-                .clipShape(
-                    RoundedRectangle(
-                        cornerRadius: 5, style: .continuous
-                    )
-                )
-                .brightness(-0.1)
+            if let urlstring = locationFragment.photoUrl {
+                
+                AsyncImage(url: URL(string: urlstring)!) { phase in
+                    switch phase {
+                    case .empty:
+                        ProgressView()
+                    case .success(let image):
+                        image.resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: 300, maxHeight: 100)
+                    case .failure:
+                        Image(systemName: "photo")
+                    @unknown default:
+                        // Since the AsyncImagePhase enum isn't frozen,
+                        // we need to add this currently unused fallback
+                        // to handle any new cases that might be added
+                        // in the future:
+                        EmptyView()
+                    }
+                }
+                
+                //                .clipShape(
+                //                    RoundedRectangle(
+                //                        cornerRadius: 5, style: .continuous
+                //                    )
+                //                )
+                //                .brightness(-0.1)
             
             VStack(alignment: .leading) {
                 Spacer()
@@ -72,6 +92,7 @@ struct LocationCellView: View {
            
         }
         //.aspectRatio(1, contentMode: .fill)
-        .frame (width: 150, height: 220)
+       
     }
+}
 }
