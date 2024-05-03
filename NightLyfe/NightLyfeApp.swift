@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Microblink
+import BlinkID
 
 @main
 struct NightLyfeApp: App {

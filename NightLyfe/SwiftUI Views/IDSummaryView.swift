@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Microblink
 
 struct IDSummaryView: View {
     @State private var shouldNavigate = false

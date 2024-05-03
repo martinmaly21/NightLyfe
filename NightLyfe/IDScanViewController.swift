@@ -7,7 +7,7 @@
 
 import SwiftUI
 import UIKit
-import Microblink
+import BlinkID
 
 struct IDScanViewController: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentationMode
@@ -16,7 +16,7 @@ struct IDScanViewController: UIViewControllerRepresentable {
     @Binding var scannedIDResult: ScannedID?
     
     
-    var blinkIdRecognizer = MBBlinkIdRecognizer()
+    var blinkIdRecognizer = MBBlinkIdSingleSideRecognizer()
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -69,10 +69,10 @@ struct IDScanViewController: UIViewControllerRepresentable {
                 parent.scannedIDResult = ScannedID(
                     photo: result.faceImage!.image!,
                     age: result.age,
-                    address: result.address!,
-                    firstName: result.firstName!,
-                    lastName: result.lastName!,
-                    birthday: result.dateOfBirth!.date!,
+                    address: result.address?.description ?? "",
+                    firstName: result.firstName?.description ?? "",
+                    lastName: result.lastName?.description ?? "",
+                    birthday: result.dateOfBirth?.date ?? Date(),
                     expirationDate: result.dateOfExpiry!.date!
                 )
                 parent.shouldNavigate = true

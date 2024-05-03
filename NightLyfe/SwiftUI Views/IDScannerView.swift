@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Microblink
 
 struct IDScannerView: View {
     @EnvironmentObject var onboardingViewModel: OnboardingViewModel

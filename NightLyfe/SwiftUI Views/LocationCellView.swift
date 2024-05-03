@@ -36,7 +36,7 @@ struct LocationCellView: View {
             )
                 .strokeBorder(Color.gray, lineWidth: 0.5)
             
-            if let urlstring = locationFragment.photoUrl {
+            let urlstring = locationFragment.photoUrl
                 
                 AsyncImage(url: URL(string: urlstring)!) { phase in
                     switch phase {
@@ -94,5 +94,4 @@ struct LocationCellView: View {
         //.aspectRatio(1, contentMode: .fill)
        
     }
-}
 }
