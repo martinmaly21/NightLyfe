@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# Xcode
+xcuserdata/
+*.xcuserstate
+build/
+DerivedData/
+
+# CocoaPods
+#
+# The Pods directory is not tracked; run `pod install` to regenerate it.
+# Podfile.lock IS committed so installs are reproducible.
+Pods/
